@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-3 product" *ngFor="let product of products">
+      <img [src]="product.image" class="img-thumbnail" alt="" />
+      <p>name: {{ product.name }}</p>
+      <p>price: {{ product.price }}</p>
+      <p>desc: {{ product.desc }}</p>
+    </div>
+  </div>
+</div>

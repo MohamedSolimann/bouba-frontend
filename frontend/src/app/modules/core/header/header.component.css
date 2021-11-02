@@ -1,0 +1,16 @@
+.navbar-brand {
+  margin-right: 25%;
+  font-family: brands;
+  font-size: 34px;
+  font-weight: bold;
+  padding-left: 20px;
+}
+a {
+  margin: 10px;
+}
+.nav-item {
+  font-size: 20px;
+}
+.shopping-cart {
+  margin-left: 10px;
+}

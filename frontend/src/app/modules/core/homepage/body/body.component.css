@@ -1,0 +1,12 @@
+.category-img {
+  margin-top: 10px;
+  opacity: 1;
+}
+.brand-img {
+  margin-top: 10px;
+}
+
+.category-img:hover {
+  opacity: 0.3;
+  transition: 1s ease;
+}
