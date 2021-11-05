@@ -9,7 +9,11 @@ export default [
     loadChildren: () =>
       import('./modules/core/core.module').then((m) => m.CoreModule),
   },
-
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./modules/cart/cart.module').then((m) => m.CartModule),
+  },
   {
     path: '',
     loadChildren: () =>

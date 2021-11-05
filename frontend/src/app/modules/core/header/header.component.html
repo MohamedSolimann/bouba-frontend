@@ -27,21 +27,34 @@
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            [routerLink]="['/product/']"
           >
             Products
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Bags</a></li>
-            <li><a class="dropdown-item" href="#">Clothes</a></li>
-            <li><a class="dropdown-item" href="#">Accessories</a></li>
+            <li>
+              <a (click)="getProductCategory('bag')" class="dropdown-item"
+                >Bags</a
+              >
+            </li>
+            <li>
+              <a (click)="getProductCategory('clothes')" class="dropdown-item"
+                >Clothes</a
+              >
+            </li>
+            <li>
+              <a
+                (click)="getProductCategory('Accessories')"
+                class="dropdown-item"
+                >Accessories</a
+              >
+            </li>
           </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact Us</a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link"
+          <a href="" class="nav-link" [routerLink]="['/cart']"
             >Cart
             <span
               ><img

@@ -4,9 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import modulesRouter from './app.routing';
+import { CartComponent } from './modules/cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CartComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

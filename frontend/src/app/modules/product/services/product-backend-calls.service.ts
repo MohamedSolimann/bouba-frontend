@@ -11,4 +11,9 @@ export class ProductBackendCallsService {
       headers: { 'Content-Type': 'Application/Json' },
     });
   }
+  getProductByCategory(category: String) {
+    return this.myHttp.get(`http://localhost:8080/products/${category}`, {
+      headers: { 'Content-Type': 'Application/Json' },
+    });
+  }
 }
