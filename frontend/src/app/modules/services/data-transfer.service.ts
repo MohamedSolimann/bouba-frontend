@@ -6,5 +6,5 @@ import { Injectable } from '@angular/core';
 export class DataTransferService {
   constructor() {}
 
-  public cart: Array<any> = [];
+  public cart: Array<any> = [{}];
 }

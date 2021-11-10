@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataTransferService } from 'src/app/data-transfer.service';
+import { DataTransferService } from 'src/app/modules/services/data-transfer.service';
 import { Product } from '../models/response';
 import { ProductBackendCallsService } from '../services/product-backend-calls.service';
 

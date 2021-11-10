@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataTransferService } from 'src/app/data-transfer.service';
+import { DataTransferService } from 'src/app/modules/services/data-transfer.service';
 
 @Component({
   selector: 'app-cart-page',

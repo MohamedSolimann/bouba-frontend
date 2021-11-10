@@ -1,20 +1,77 @@
 <div class="row">
-  <div *ngIf="cartProducts.length === 0 ? false : true" class="col-md-4">
+  <div
+    *ngIf="cartProducts.length === 0 ? false : true"
+    class="col-md-4 order-info"
+  >
     <h3>Order Info</h3>
     <div class="form-group">
       <label for="Username">Name</label>
-      <input type="text" class="form-control" id="Username" />
+      <input
+        [(ngModel)]="username"
+        type="text"
+        class="form-control"
+        id="Username"
+        required
+        #usernameVar="ngModel"
+      />
+      <p
+        *ngIf="
+          usernameVar.invalid && (usernameVar.dirty || usernameVar.touched)
+        "
+        class="error"
+      >
+        Name is required
+      </p>
     </div>
     <div class="form-group">
       <label for="Mobile">Mobile</label>
-      <input type="text" class="form-control" id="Mobile" />
+      <input
+        [(ngModel)]="mobile"
+        type="text"
+        class="form-control"
+        id="Mobile"
+        required
+        #mobileVar="ngModel"
+      />
+      <p
+        *ngIf="mobileVar.invalid && (mobileVar.dirty || mobileVar.touched)"
+        class="error"
+      >
+        Mobile is required
+      </p>
     </div>
     <div class="form-group">
       <label for="Address">Address</label>
-      <input type="text" class="form-control" id="Address" />
+      <input
+        [(ngModel)]="address"
+        type="text"
+        class="form-control"
+        id="Address"
+        required
+        #addressVar="ngModel"
+      />
+      <p
+        class="error"
+        *ngIf="addressVar.invalid && (addressVar.touched || addressVar.dirty)"
+      >
+        Address is required
+      </p>
     </div>
     <div>
-      <button class="btn btn-primary form-group">Place Order</button>
+      <button
+        [disabled]="
+          usernameVar.invalid || addressVar.invalid || mobileVar.invalid
+        "
+        (click)="handleSumbitOrder()"
+        class="btn btn-primary form-group"
+      >
+        Place Order
+      </button>
     </div>
   </div>
+  <!-- <div class="col-md-3"> -->
+  <p class="sucess" *ngIf="responseMessage ? true : false">
+    Order Placed Successfully
+  </p>
+  <!-- </div> -->
 </div>

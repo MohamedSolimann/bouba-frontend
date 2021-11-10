@@ -1,0 +1,20 @@
+h3 {
+  color: lightsalmon;
+}
+
+label {
+  margin: 5px 0;
+}
+input {
+  margin: 10px 0;
+}
+.sucess {
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 20px 0;
+}
+.error {
+  color: red;
+  font-size: 12px;
+}
