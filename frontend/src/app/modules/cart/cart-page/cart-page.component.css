@@ -14,3 +14,32 @@ img {
 .table-data {
   margin-top: 10px;
 }
+.order-summary {
+  align-items: center;
+  text-align: center;
+  border: 1px lightgrey solid;
+  border-radius: 2px;
+  background-color: #f7f7f7;
+  margin-top: 52px;
+  height: 200px;
+}
+input {
+  text-align: center;
+}
+.form-group {
+  margin: 20px 0;
+}
+label {
+  margin: 10px 0;
+  color: black;
+}
+h3 {
+  color: lightsalmon;
+}
+hr {
+  margin: 10px 0;
+}
+.cart-message {
+  padding-top: 20px;
+  text-align: center;
+}
