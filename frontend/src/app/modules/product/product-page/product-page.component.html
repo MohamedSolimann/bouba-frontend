@@ -6,6 +6,9 @@
       <p class="product-name">{{ product.name }}</p>
       <p class="product-price">{{ product.price }}.0EGY</p>
       <p class="product-desc">{{ product.desc }}</p>
+      <p (click)="addToCart(product)" class="product-desc">
+        <button class="btn btn-primary">Addt To Cart</button>
+      </p>
     </div>
   </div>
 </div>

@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   getProductCategory(category: string) {
-    debugger;
     this.myNaviagtion.navigateByURLWithData('/product', category);
     this.myNaviagtion.refreshPage(`product/${category}`);
   }

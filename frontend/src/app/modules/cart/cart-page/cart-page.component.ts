@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataTransferService } from 'src/app/data-transfer.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-page.component.css'],
 })
 export class CartPageComponent implements OnInit {
-  constructor() {}
+  constructor(public dataTransfer: DataTransferService) {}
+  public cartProducts: Array<any> = this.dataTransfer.cart;
 
   ngOnInit(): void {}
 }

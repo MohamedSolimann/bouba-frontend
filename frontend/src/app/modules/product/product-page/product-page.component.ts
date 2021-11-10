@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NavigationService } from '../../core/service/navigation.service';
+import { DataTransferService } from 'src/app/data-transfer.service';
 import { Product } from '../models/response';
 import { ProductBackendCallsService } from '../services/product-backend-calls.service';
 
@@ -13,10 +13,8 @@ export class ProductPageComponent implements OnInit {
   constructor(
     public productBackendCalls: ProductBackendCallsService,
     public myActivedRouter: ActivatedRoute,
-    public myNaviagtion: NavigationService
+    public dataTransfer: DataTransferService
   ) {
-    // this.handleGetAllProducts();
-    debugger;
     this.category = myActivedRouter.snapshot.params.category;
     this.handleGetProductsByCategory();
   }
@@ -32,14 +30,15 @@ export class ProductPageComponent implements OnInit {
     });
   }
   handleGetProductsByCategory() {
-    debugger;
     this.productBackendCalls
       .getProductByCategory(this.category)
       .subscribe((res: any) => {
         if (res.message === 'Success') {
-          debugger;
           this.products = res.data;
         }
       });
+  }
+  addToCart(product: object) {
+    this.dataTransfer.cart.push(product);
   }
 }
