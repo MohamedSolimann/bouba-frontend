@@ -20,7 +20,7 @@ img {
   border: 1px lightgrey solid;
   border-radius: 2px;
   background-color: #f7f7f7;
-  margin-top: 52px;
+  margin-top: 62px;
   height: 200px;
 }
 input {
@@ -37,7 +37,7 @@ h3 {
   color: lightsalmon;
 }
 hr {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .cart-message {
   padding-top: 20px;

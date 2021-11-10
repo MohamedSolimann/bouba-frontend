@@ -10,7 +10,6 @@ export class CartPageComponent implements OnInit {
   constructor(public dataTransfer: DataTransferService) {}
 
   public cartProducts: Array<any> = this.dataTransfer.cart;
-  public show: boolean = true;
 
   ngOnInit(): void {}
 
@@ -21,11 +20,6 @@ export class CartPageComponent implements OnInit {
         this.cartProducts.splice(i, 1);
         return;
       }
-    }
-  }
-  checkCartIsEmpty() {
-    if (this.cartProducts.length !== 0) {
-      this.show = false;
     }
   }
 }

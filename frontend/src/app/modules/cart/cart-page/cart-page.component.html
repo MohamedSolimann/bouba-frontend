@@ -38,28 +38,8 @@
       <h3>Order Summary</h3>
       <p><strong>Items</strong> : 4</p>
       <p><strong>Total</strong> : 200.00EGP <br />+</p>
-      <!-- <p>+</p> -->
       <p>Shipping Fees</p>
     </div>
   </div>
-  <div class="row">
-    <div *ngIf="cartProducts.length === 0 ? false : true" class="col-md-4">
-      <h3>Order Info</h3>
-      <div class="form-group">
-        <label for="Username">Name</label>
-        <input type="text" class="form-control" id="Username" />
-      </div>
-      <div class="form-group">
-        <label for="Mobile">Mobile</label>
-        <input type="text" class="form-control" id="Mobile" />
-      </div>
-      <div class="form-group">
-        <label for="Address">Address</label>
-        <input type="text" class="form-control" id="Address" />
-      </div>
-      <div>
-        <button class="btn btn-primary form-group">Place Order</button>
-      </div>
-    </div>
-  </div>
+  <app-order-page></app-order-page>
 </div>
