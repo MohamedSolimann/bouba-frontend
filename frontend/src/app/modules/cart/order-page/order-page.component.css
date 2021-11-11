@@ -1,9 +1,10 @@
-h3 {
+h2 {
   color: lightsalmon;
 }
 
 label {
   margin: 5px 0;
+  color: blue;
 }
 input {
   margin: 10px 0;

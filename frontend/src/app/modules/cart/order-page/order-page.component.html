@@ -3,7 +3,7 @@
     *ngIf="cartProducts.length === 0 ? false : true"
     class="col-md-4 order-info"
   >
-    <h3>Order Info</h3>
+    <h2>Order Info</h2>
     <div class="form-group">
       <label for="Username">Name</label>
       <input
@@ -43,16 +43,44 @@
     <div class="form-group">
       <label for="Address">Address</label>
       <input
-        [(ngModel)]="address"
+        [(ngModel)]="region"
         type="text"
         class="form-control"
-        id="Address"
+        id="Region"
         required
-        #addressVar="ngModel"
+        #regionVar="ngModel"
+        placeholder="Region Ex:Giza"
+      />
+      <input
+        [(ngModel)]="street"
+        type="text"
+        class="form-control"
+        id="Street"
+        required
+        placeholder="Street Ex:dokki St"
+        #streetVar="ngModel"
+      />
+      <input
+        [(ngModel)]="floor"
+        type="text"
+        class="form-control"
+        id="Floor"
+        required
+        placeholder="Floor Ex:3"
+        #floorVar="ngModel"
+      />
+      <input
+        [(ngModel)]="appartment"
+        type="text"
+        class="form-control"
+        id="Appartment"
+        required
+        appartmentVar="ngModel"
+        placeholder="Appartment Ex:10"
       />
       <p
         class="error"
-        *ngIf="addressVar.invalid && (addressVar.touched || addressVar.dirty)"
+        *ngIf="streetVar.invalid && (streetVar.touched || streetVar.dirty)"
       >
         Address is required
       </p>
@@ -60,7 +88,7 @@
     <div>
       <button
         [disabled]="
-          usernameVar.invalid || addressVar.invalid || mobileVar.invalid
+          usernameVar.invalid || streetVar.invalid || mobileVar.invalid
         "
         (click)="handleSumbitOrder()"
         class="btn btn-primary form-group"
@@ -75,3 +103,4 @@
   </p>
   <!-- </div> -->
 </div>
+<app-maps (AddressEmit)="getAddress($event)"></app-maps>

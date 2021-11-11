@@ -16,7 +16,10 @@ export class OrderPageComponent implements OnInit {
   public cartProducts: Array<any> = this.dataTransfer.cart;
   public mobile: string = '';
   public username: string = '';
-  public address: string = '';
+  public street: string = '';
+  public floor: string = '';
+  public appartment: string = '';
+  public region: string = '';
   public total: number = 0;
   public responseMessage: string = '';
 
@@ -29,12 +32,28 @@ export class OrderPageComponent implements OnInit {
   }
   handleSumbitOrder() {
     this.getCartProductsTotal();
-    let { username, address, mobile, cartProducts, total } = this;
+    let {
+      username,
+      region,
+      street,
+      floor,
+      appartment,
+      mobile,
+      cartProducts,
+      total,
+    } = this;
+    let address = { region, street, floor, appartment };
     let data = { username, address, mobile, products: cartProducts, total };
     this.cartBackendCalls.sumbitOrder(data).subscribe((res: any) => {
       if (res.message === 'Success') {
         this.responseMessage = 'Order Successfully';
       }
     });
+  }
+
+  getAddress(address) {
+    debugger;
+    this.region = address.region;
+    this.street = address.address;
   }
 }
