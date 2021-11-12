@@ -1,8 +1,5 @@
-<div class="row">
-  <div
-    *ngIf="cartProducts.length === 0 ? false : true"
-    class="col-md-4 order-info"
-  >
+<div class="row" *ngIf="cartProducts.length === 0 ? false : true">
+  <div class="col-md-4 order-info">
     <h2>Order Info</h2>
     <div class="form-group">
       <label for="Username">Name</label>
@@ -97,10 +94,10 @@
       </button>
     </div>
   </div>
-  <!-- <div class="col-md-3"> -->
   <p class="sucess" *ngIf="responseMessage ? true : false">
     Order Placed Successfully
   </p>
-  <!-- </div> -->
+  <div class="col-md-8">
+    <app-maps (AddressEmit)="getAddress($event)"></app-maps>
+  </div>
 </div>
-<app-maps (AddressEmit)="getAddress($event)"></app-maps>
