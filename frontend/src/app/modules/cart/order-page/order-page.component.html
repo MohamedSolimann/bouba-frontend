@@ -28,6 +28,7 @@
         class="form-control"
         id="Mobile"
         required
+        minlength="11"
         #mobileVar="ngModel"
       />
       <p
@@ -35,6 +36,12 @@
         class="error"
       >
         Mobile is required
+      </p>
+      <p
+        *ngIf="mobileVar.errors?.['minlength'] && (mobileVar.dirty || mobileVar.touched)"
+        class="error"
+      >
+        Mobile is must be 11 numbers
       </p>
     </div>
     <div class="form-group">
@@ -45,9 +52,15 @@
         class="form-control"
         id="Region"
         required
-        #regionVar="ngModel"
         placeholder="Region Ex:Giza"
+        #regionVar="ngModel"
       />
+      <p
+        class="error"
+        *ngIf="regionVar.invalid?.['required'] && (regionVar.dirty || regionVar.touched)"
+      >
+        Region is required
+      </p>
       <input
         [(ngModel)]="street"
         type="text"
@@ -57,6 +70,12 @@
         placeholder="Street Ex:dokki St"
         #streetVar="ngModel"
       />
+      <p
+        class="error"
+        *ngIf="streetVar.invalid && (streetVar.dirty || streetVar.touched)"
+      >
+        Street is required
+      </p>
       <input
         [(ngModel)]="floor"
         type="text"
@@ -66,22 +85,22 @@
         placeholder="Floor Ex:3"
         #floorVar="ngModel"
       />
-      <input
-        [(ngModel)]="appartment"
-        type="text"
-        class="form-control"
-        id="Appartment"
-        required
-        appartmentVar="ngModel"
-        placeholder="Appartment Ex:10"
-      />
-      <p
-        class="error"
-        *ngIf="streetVar.invalid && (streetVar.touched || streetVar.dirty)"
-      >
-        Address is required
+
+      <p class="error">
+        <input
+          [(ngModel)]="appartment"
+          type="text"
+          class="form-control"
+          id="Appartment"
+          required
+          placeholder="Appartment Ex:10"
+          #appartmentVar="ngModel"
+        />
       </p>
+
+      <p class="error"></p>
     </div>
+
     <div>
       <button
         [disabled]="
@@ -93,10 +112,11 @@
         Place Order
       </button>
     </div>
+    <p class="sucess" *ngIf="responseMessage ? true : false">
+      Order Placed Successfully
+    </p>
   </div>
-  <p class="sucess" *ngIf="responseMessage ? true : false">
-    Order Placed Successfully
-  </p>
+
   <div class="col-md-8">
     <app-maps (AddressEmit)="getAddress($event)"></app-maps>
   </div>

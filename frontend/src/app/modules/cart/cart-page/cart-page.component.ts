@@ -17,7 +17,6 @@ export class CartPageComponent implements OnInit {
   ngOnInit(): void {}
 
   removeItemFromCart(productName: String) {
-    debugger;
     for (let i = 0; i < this.cartProducts.length; i++) {
       if (this.cartProducts[i].name === productName) {
         this.cartProducts.splice(i, 1);
