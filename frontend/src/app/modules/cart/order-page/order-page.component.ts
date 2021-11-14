@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataTransferService } from 'src/app/modules/services/data-transfer.service';
+import { CookieService } from 'ngx-cookie-service';
 import { CartBackendCallsService } from '../services/cart-backendCalls.service';
 
 @Component({
@@ -9,11 +9,13 @@ import { CartBackendCallsService } from '../services/cart-backendCalls.service';
 })
 export class OrderPageComponent implements OnInit {
   constructor(
-    public dataTransfer: DataTransferService,
-    public cartBackendCalls: CartBackendCallsService
-  ) {}
+    public cartBackendCalls: CartBackendCallsService,
+    public cookieService : CookieService
+  ) {
+   this.cartProducts =JSON.parse( this.cookieService.get('cart'))
+  }
 
-  public cartProducts: Array<any> = this.dataTransfer.cart;
+  public cartProducts: Array<any> = []
   public mobile: string = '';
   public username: string = '';
   public street: string = '';
@@ -50,9 +52,8 @@ export class OrderPageComponent implements OnInit {
       }
     });
   }
-
   getAddress(address) {
-    debugger;
+    ;
     this.region = address.region;
     this.street = address.address;
   }
