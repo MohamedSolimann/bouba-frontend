@@ -12,7 +12,7 @@ export class OrderPageComponent implements OnInit {
     public cartBackendCalls: CartBackendCallsService,
     public cookieService: CookieService
   ) {
-    this.cartProducts = JSON.parse(this.cookieService.get("cart"));
+    this.getCookies("cart");
   }
 
   public cartProducts: Array<any> = [];
@@ -49,11 +49,17 @@ export class OrderPageComponent implements OnInit {
     this.cartBackendCalls.sumbitOrder(data).subscribe((res: any) => {
       if (res.message === "Success") {
         this.responseMessage = "Order Successfully";
+        this.cookieService.delete("cart");
       }
     });
   }
   getAddress(address) {
     this.region = address.region;
     this.street = address.address;
+  }
+  getCookies(cookieName: string) {
+    if (this.cookieService.check(cookieName)) {
+      this.cartProducts = JSON.parse(this.cookieService.get(cookieName));
+    }
   }
 }

@@ -42,7 +42,9 @@ export class CartPageComponent implements OnInit {
     });
   }
   getCookies(cookieName: string) {
-    this.cartProducts = JSON.parse(this.cookieService.get(cookieName));
+    if (this.cookieService.check(cookieName)) {
+      this.cartProducts = JSON.parse(this.cookieService.get(cookieName));
+    }
   }
   setCookies(cookieName: string, cookieValue: any) {
     this.cookieService.set(cookieName, cookieValue);
