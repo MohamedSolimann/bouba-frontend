@@ -1,6 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Product } from "../../product/models/response";
-import { ProductBackendCallsService } from "../../product/services/product-backend-calls.service";
 import { NavigationService } from "../../../service/navigation.service";
 
 @Component({

@@ -14,6 +14,9 @@
 .category-img:hover + .img-text {
   visibility: visible;
 }
+.category-img:hover + .main-img-text {
+  visibility: visible;
+}
 .as {
   position: relative;
 }
@@ -31,4 +34,15 @@
 .main-image {
   height: 95%;
   width: 99%;
+}
+.main-img-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: brands;
 }
