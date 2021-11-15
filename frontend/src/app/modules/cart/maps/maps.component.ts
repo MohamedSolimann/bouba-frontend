@@ -52,7 +52,6 @@ export class MapsComponent implements OnInit {
   }
   getUserAddress(lng, lat) {
     this.myMap.getUserAddress(lng, lat).subscribe((res: any) => {
-      debugger;
       this.region = res.features[0].context[2].text;
       this.address = res.features[0].properties.address;
     });

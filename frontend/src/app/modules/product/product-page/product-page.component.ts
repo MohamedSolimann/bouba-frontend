@@ -23,7 +23,6 @@ export class ProductPageComponent implements OnInit {
 
   public products: Array<Product> = [];
   public category: string = "";
-  public show: boolean = false;
   ngOnInit(): void {}
 
   handleGetAllProducts() {
@@ -41,15 +40,28 @@ export class ProductPageComponent implements OnInit {
       });
   }
   addToCart(product: object) {
-    this.show = true;
-    let cookieValue = this.cookieService.get("cart");
-    if (cookieValue) {
-      let parsedCookieValue = JSON.parse(cookieValue);
-      parsedCookieValue.push(product);
-      this.cookieService.set("cart", JSON.stringify(parsedCookieValue));
+    if (!this.checkProductInCart(product)) {
+      let cookieValue = this.cookieService.get("cart");
+      if (cookieValue) {
+        let parsedCookieValue = JSON.parse(cookieValue);
+        parsedCookieValue.push(product);
+        this.cookieService.set("cart", JSON.stringify(parsedCookieValue));
+      } else {
+        this.cookieService.set("cart", JSON.stringify([product]));
+      }
+      this.myNavigation.navigateByURL("cart");
     } else {
-      this.cookieService.set("cart", JSON.stringify([product]));
+      this.myNavigation.navigateByURL("cart");
     }
-    this.myNavigation.navigateByURL("cart");
+  }
+  checkProductInCart(productInfo) {
+    let cookieValue = JSON.parse(this.cookieService.get("cart"));
+    for (let i = 0; i < cookieValue.length; i++) {
+      const product = cookieValue[i];
+      if (product.name === productInfo.name) {
+        return true;
+      }
+    }
+    return false;
   }
 }

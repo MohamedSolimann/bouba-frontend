@@ -36,7 +36,6 @@ export class CartPageComponent implements OnInit {
     }
   }
   getCartTotal() {
-    console.log(this.cartProducts);
     this.cartProducts.forEach((obj) => {
       this.total += parseInt(obj.price);
     });
