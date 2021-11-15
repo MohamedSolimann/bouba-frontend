@@ -1,12 +1,34 @@
 .category-img {
-  margin-top: 10px;
   opacity: 1;
+  height: 90%;
+  width: 99%;
 }
 .brand-img {
   margin-top: 10px;
 }
 
 .category-img:hover {
-  opacity: 0.3;
+  opacity: 0.4;
   transition: 1s ease;
+}
+.category-img:hover + .img-text {
+  visibility: visible;
+}
+.as {
+  position: relative;
+}
+.img-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: brands;
+}
+.main-image {
+  height: 95%;
+  width: 99%;
 }

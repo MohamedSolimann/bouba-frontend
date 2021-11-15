@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="#"
       ><img
         class="img-logo"
-        src="../../../../assets/images/bouba-logo/logo.jpeg"
+        src="../../../../assets/images/bouba-logo/black-logo.jpeg"
         alt=""
     /></a>
     <button
@@ -37,26 +37,29 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a (click)="getProductCategory('bag')" class="dropdown-item"
-                >Bags</a
-              >
+              <p (click)="getProductCategory('Bags')" class="dropdown-item">
+                Bags
+              </p>
             </li>
             <li>
-              <a (click)="getProductCategory('clothes')" class="dropdown-item"
-                >Clothes</a
-              >
+              <p (click)="getProductCategory('Clothes')" class="dropdown-item">
+                Clothes
+              </p>
             </li>
             <li>
-              <a
+              <p
                 (click)="getProductCategory('Accessories')"
                 class="dropdown-item"
-                >Accessories</a
               >
+                Accessories
+              </p>
+            </li>
+            <li>
+              <p class="dropdown-item" (click)="getProductCategory('Scarfs')">
+                Scarfs
+              </p>
             </li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
         </li>
         <li class="nav-item">
           <a href="" class="nav-link" [routerLink]="['/cart']"

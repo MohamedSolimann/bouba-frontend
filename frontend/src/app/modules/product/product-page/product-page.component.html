@@ -3,8 +3,7 @@
   <div class="row">
     <div class="col-xl-4 product" *ngFor="let product of products">
       <img [src]="product.image" class="img-thumbnail product-image" alt="" />
-      <p class="product-name">{{ product.name }}</p>
-      <p class="product-price">{{ product.price }}.0EGY</p>
+      <p class="product-price">{{ product.price }}.0EGP</p>
       <p class="product-desc">{{ product.desc }}</p>
       <p (click)="addToCart(product)" class="product-desc">
         <button class="btn btn-primary">Addt To Cart</button>

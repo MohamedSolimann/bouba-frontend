@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
+import { NavigationService } from "src/app/service/navigation.service";
 import { Product } from "../models/response";
 import { ProductBackendCallsService } from "../services/product-backend-calls.service";
 
@@ -13,7 +14,8 @@ export class ProductPageComponent implements OnInit {
   constructor(
     public productBackendCalls: ProductBackendCallsService,
     public myActivedRouter: ActivatedRoute,
-    public cookieService: CookieService
+    public cookieService: CookieService,
+    public myNavigation: NavigationService
   ) {
     this.category = myActivedRouter.snapshot.params.category;
     this.handleGetProductsByCategory();
@@ -21,6 +23,7 @@ export class ProductPageComponent implements OnInit {
 
   public products: Array<Product> = [];
   public category: string = "";
+  public show: boolean = false;
   ngOnInit(): void {}
 
   handleGetAllProducts() {
@@ -38,6 +41,7 @@ export class ProductPageComponent implements OnInit {
       });
   }
   addToCart(product: object) {
+    this.show = true;
     let cookieValue = this.cookieService.get("cart");
     if (cookieValue) {
       let parsedCookieValue = JSON.parse(cookieValue);
@@ -46,5 +50,6 @@ export class ProductPageComponent implements OnInit {
     } else {
       this.cookieService.set("cart", JSON.stringify([product]));
     }
+    this.myNavigation.navigateByURL("cart");
   }
 }

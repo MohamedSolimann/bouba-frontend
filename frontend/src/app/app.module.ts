@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import modulesRouter from './app.routing';
-import { CartComponent } from './modules/cart/cart.component';
+import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule } from "@angular/router";
+import { AppComponent } from "./app.component";
+import modulesRouter from "./app.routing";
+import { CartComponent } from "./modules/cart/cart.component";
+import { CoreModule } from "./modules/core/core.module";
 
 @NgModule({
   declarations: [AppComponent, CartComponent],
