@@ -31,26 +31,16 @@ export class MapsComponent implements OnInit {
       lng = e.coords.longitude;
       lat = e.coords.latitude;
       marker.setLngLat([lng, lat]).addTo(map);
-      this.myMap.getUserAddress(lng, lat).subscribe((res: any) => {
-        this.region = res.features[0].context[2].text;
-        this.address = res.features[0].properties.address;
-      });
-      setTimeout(() => {
-        this.emitAddress();
-      }, 2000);
+      this.getUserAddress(lng, lat);
     });
-    const marker = new mapboxgl.Marker({
-      draggable: true,
+    const marker = new mapboxgl.Marker({});
+
+    map.on("moveend", () => {
+      marker.setLngLat(map.getCenter());
+      this.getUserAddress(map.getCenter().lng, map.getCenter().lat);
     });
-    marker.on("dragend", () => {
-      const lnglat = marker.getLngLat();
-      this.myMap
-        .getUserAddress(lnglat.lng, lnglat.lat)
-        .subscribe((res: any) => {
-          this.region = res.features[0].context[2].text;
-          this.address = res.features[0].properties.address;
-        });
-      this.emitAddress();
+    map.on("move", () => {
+      marker.setLngLat(map.getCenter());
     });
   }
   @Output() AddressEmit = new EventEmitter<Object>();
@@ -59,5 +49,15 @@ export class MapsComponent implements OnInit {
 
   emitAddress() {
     this.AddressEmit.emit({ region: this.region, address: this.address });
+  }
+  getUserAddress(lng, lat) {
+    this.myMap.getUserAddress(lng, lat).subscribe((res: any) => {
+      debugger;
+      this.region = res.features[0].context[2].text;
+      this.address = res.features[0].properties.address;
+    });
+    setTimeout(() => {
+      this.emitAddress();
+    }, 2000);
   }
 }
