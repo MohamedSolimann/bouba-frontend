@@ -5,48 +5,64 @@
       <img [src]="product.image" class="img-thumbnail product-image" alt="" />
       <p class="product-price">{{ product.price }}.0EGP</p>
       <p class="product-desc">{{ product.desc }}</p>
-      <p (click)="addToCart(product)" class="product-desc">
-        <button class="btn btn-primary">Addt To Cart</button>
-      </p>
-      <div>
-        <div>
-          <label for="price">Price : </label>
-          <input type="text" id="price" />
-        </div>
-        <div>
-          <label for="desc">Desc : </label>
-          <input type="text" id="desc" />
-        </div>
-        <div>
-          <label for="stock">Stock : </label>
-          <input type="text" id="stock" />
-        </div>
-        <div>
-          <label for="status">Status : </label>
-          <input type="text" id="status" />
-        </div>
-        <button class="btn btn-success">Update Product</button>
-      </div>
+      <button (click)="addToCart(product)" class="btn btn-primary">
+        Addt To Cart
+      </button>
+      <button (click)="getProductid(product)" class="btn btn-primary">
+        Get Product Id
+      </button>
     </div>
   </div>
   <div>
-    <h3>Add New Product</h3>
+    <h3>Admin Panel</h3>
+    <div>
+      <label for="productId">Product-Id : </label>
+      <input [(ngModel)]="productId" type="text" id="productId" />
+      <p>Product id used for update and remove products only</p>
+    </div>
     <div>
       <label for="price">Price : </label>
-      <input type="text" id="price" />
+      <input [(ngModel)]="price" type="text" id="price" />
     </div>
     <div>
       <label for="desc">Desc : </label>
-      <input type="text" id="desc" />
+      <input [(ngModel)]="desc" type="text" id="desc" />
     </div>
     <div>
       <label for="stock">Stock : </label>
-      <input type="text" id="stock" />
+      <input [(ngModel)]="stock" type="text" id="stock" />
+    </div>
+    <div>
+      <label for="productCategory">Product Category : </label>
+      <input [(ngModel)]="productCategory" type="text" id="productCategory" />
     </div>
     <div>
       <label for="status">Status : </label>
-      <input type="text" id="status" />
+      <input [(ngModel)]="status" type="text" id="status" />
     </div>
-    <button class="btn btn-success">Add Product</button>
+    <div>
+      <label for="code">Code : </label>
+      <input [(ngModel)]="code" type="text" id="code" />
+    </div>
+    <div>
+      <label for="product-image">Product Image : </label>
+      <input [(ngModel)]="productImage" type="text" id="product-image" />
+    </div>
+    <p class="responseMessage">{{ responseMessage }}</p>
+    <button (click)="handleAddProduct()" class="btn btn-success admin-button">
+      Add Product
+    </button>
+    <button
+      (click)="handleRemoveProduct()"
+      class="btn btn-success admin-button"
+    >
+      Remove Porduct
+    </button>
+    <button
+      (click)="handleUpdateProduct()"
+      class="btn btn-success admin-button"
+    >
+      Update Porduct
+    </button>
   </div>
 </div>

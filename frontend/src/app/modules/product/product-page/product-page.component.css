@@ -13,9 +13,6 @@
   font-weight: bold;
   font-size: 20px;
 }
-/* .product-desc {
-
-} */
 .container {
   margin-top: 20px;
 }
@@ -24,4 +21,10 @@ body {
 }
 .addToCart {
   color: brown;
+}
+.admin-button {
+  margin: 10px;
+}
+.responseMessage {
+  color: red;
 }

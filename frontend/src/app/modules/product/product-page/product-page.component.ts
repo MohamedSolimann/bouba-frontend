@@ -23,13 +23,18 @@ export class ProductPageComponent implements OnInit {
 
   public products: Array<Product> = [];
   public category: string = "";
+  public price: string = "";
+  public desc: string = "";
+  public stock: string = "";
+  public status: string = "";
+  public productId: any = "";
+  public code: string = "";
+  public productImage: string = "";
+  public productCategory: string = "";
+  public responseMessage: string = "";
+  public product: any = {};
   ngOnInit(): void {}
 
-  handleGetAllProducts() {
-    this.productBackendCalls.getAllProducts().subscribe((res: any) => {
-      this.products = res.data;
-    });
-  }
   handleGetProductsByCategory() {
     this.productBackendCalls
       .getProductByCategory(this.category)
@@ -66,5 +71,70 @@ export class ProductPageComponent implements OnInit {
       }
     }
     return false;
+  }
+  getProductid(product: any) {
+    this.productId = product._id;
+    this.product = product;
+    console.log(this.productId);
+  }
+  handleUpdateProduct() {
+    const {
+      productId,
+      price,
+      stock,
+      status,
+      desc,
+      productCategory,
+      code,
+      productImage,
+    } = this;
+    const data = {
+      price,
+      stock,
+      status,
+      desc,
+      category: productCategory,
+      code,
+      image: productImage,
+    };
+    this.productBackendCalls
+      .updateProduct(productId, data)
+      .subscribe((res: any) => {
+        if (res.message === "Updated Successfuly") {
+          this.responseMessage = res.message;
+          setTimeout(() => {
+            this.myNavigation.refreshPage(`/product/${this.product.category}`);
+          }, 1000);
+        }
+      });
+  }
+  handleRemoveProduct() {
+    this.productBackendCalls
+      .removeProduct(this.productId)
+      .subscribe((res: any) => {
+        if (res.message === "Deleted Successfuly") {
+          this.responseMessage = res.message;
+          this.myNavigation.refreshPage(`/product/${this.product.category}`);
+        }
+      });
+  }
+  handleAddProduct() {
+    const { price, stock, status, desc, productCategory, code, productImage } =
+      this;
+    const data = {
+      price,
+      stock,
+      status,
+      desc,
+      category: productCategory,
+      code,
+      image: productImage,
+    };
+    this.productBackendCalls.addProduct(data).subscribe((res: any) => {
+      if (res.message === "Created Successfuly") {
+        this.responseMessage = res.message;
+        this.myNavigation.refreshPage(`/product/${this.product.category}`);
+      }
+    });
   }
 }

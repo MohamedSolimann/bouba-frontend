@@ -21,4 +21,19 @@ export class ProductBackendCallsService {
       }
     );
   }
+  updateProduct(productId, data) {
+    return this.myHttp.put(
+      `http://localhost:8080/products/${productId}`,
+      data,
+      {
+        headers: { "Content-Type": "Application/Json" },
+      }
+    );
+  }
+  removeProduct(productId) {
+    return this.myHttp.delete(`http://localhost:8080/products/${productId}`);
+  }
+  addProduct(data) {
+    return this.myHttp.post("http://localhost:8080/products", data);
+  }
 }
