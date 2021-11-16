@@ -8,12 +8,16 @@
       <button (click)="addToCart(product)" class="btn btn-primary">
         Addt To Cart
       </button>
-      <button (click)="getProductid(product)" class="btn btn-primary">
+      <button
+        *ngIf="token"
+        (click)="getProductid(product)"
+        class="btn btn-primary"
+      >
         Get Product Id
       </button>
     </div>
   </div>
-  <div>
+  <div *ngIf="token">
     <h3>Admin Panel</h3>
     <div>
       <label for="productId">Product-Id : </label>

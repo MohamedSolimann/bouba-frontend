@@ -19,6 +19,7 @@ export class ProductPageComponent implements OnInit {
   ) {
     this.category = myActivedRouter.snapshot.params.category;
     this.handleGetProductsByCategory();
+    this.userAuthentication();
   }
 
   public products: Array<Product> = [];
@@ -33,6 +34,7 @@ export class ProductPageComponent implements OnInit {
   public productCategory: string = "";
   public responseMessage: string = "";
   public product: any = {};
+  public token: boolean = false;
   ngOnInit(): void {}
 
   handleGetProductsByCategory() {
@@ -136,5 +138,8 @@ export class ProductPageComponent implements OnInit {
         this.myNavigation.refreshPage(`/product/${this.product.category}`);
       }
     });
+  }
+  userAuthentication() {
+    this.token = this.cookieService.check("token");
   }
 }

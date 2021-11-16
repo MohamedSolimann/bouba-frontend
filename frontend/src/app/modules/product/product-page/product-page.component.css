@@ -28,3 +28,6 @@ body {
 .responseMessage {
   color: red;
 }
+button {
+  margin: 10px;
+}

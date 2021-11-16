@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { CookieService } from "ngx-cookie-service";
 import { NavigationService } from "../../../service/navigation.service";
 import { UserBackendcallsService } from "../service/user-backendcalls.service";
 
@@ -10,9 +11,12 @@ import { UserBackendcallsService } from "../service/user-backendcalls.service";
 export class HeaderComponent implements OnInit {
   constructor(
     public myNaviagtion: NavigationService,
-    public userBC: UserBackendcallsService
-  ) {}
-
+    public userBC: UserBackendcallsService,
+    public cookieService: CookieService
+  ) {
+    this.userAuthentication();
+  }
+  public token: boolean = false;
   ngOnInit(): void {}
 
   getProductCategory(category: string) {
@@ -22,8 +26,12 @@ export class HeaderComponent implements OnInit {
   signOut() {
     this.userBC.handleSignOut().subscribe((res: any) => {
       if (res.message === "Success") {
-        this.myNaviagtion.refreshPage("");
+        debugger;
+        this.myNaviagtion.refreshPage("/core");
       }
     });
+  }
+  userAuthentication() {
+    this.token = this.cookieService.check("token");
   }
 }
