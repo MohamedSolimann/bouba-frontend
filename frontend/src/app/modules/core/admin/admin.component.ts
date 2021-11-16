@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
 
   signIn() {
     let data = { username: this.username, password: this.password };
-    this.userBC.handleSign(data).subscribe((res: any) => {
+    this.userBC.handleSignIn(data).subscribe((res: any) => {
       if (res.message === "Success") {
         this.myNavigation.navigateByURL("/");
       }

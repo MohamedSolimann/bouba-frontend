@@ -7,9 +7,14 @@ import { Injectable } from "@angular/core";
 export class UserBackendcallsService {
   constructor(public myHttp: HttpClient) {}
 
-  handleSign(data) {
+  handleSignIn(data) {
     return this.myHttp.post("http://localhost:8080/user/signin", data, {
       headers: { "Contet-Type": "Application/JSOn" },
+      withCredentials: true,
+    });
+  }
+  handleSignOut() {
+    return this.myHttp.get("http://localhost:8080/user/signout", {
       withCredentials: true,
     });
   }

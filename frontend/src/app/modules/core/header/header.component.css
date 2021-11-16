@@ -17,3 +17,6 @@ a {
 .img-logo {
   width: 200px;
 }
+.logOutButton {
+  cursor: pointer;
+}
