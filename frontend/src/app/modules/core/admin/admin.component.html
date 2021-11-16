@@ -1,0 +1,19 @@
+<div class="container">
+  <h3>Admin Panel</h3>
+  <div class="row">
+    <div class="col-md-5">
+      <label for="username">username :</label>
+      <input [(ngModel)]="username" type="text" name="username" id="username" />
+    </div>
+    <div class="col-md-5">
+      <label for="password">password :</label>
+      <input
+        [(ngModel)]="password"
+        type="password"
+        name="password"
+        id="password"
+      />
+    </div>
+    <button (click)="signIn()" class="btn btn-primary">LogIn</button>
+  </div>
+</div>

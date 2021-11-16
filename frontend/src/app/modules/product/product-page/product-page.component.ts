@@ -55,11 +55,14 @@ export class ProductPageComponent implements OnInit {
     }
   }
   checkProductInCart(productInfo) {
-    let cookieValue = JSON.parse(this.cookieService.get("cart"));
-    for (let i = 0; i < cookieValue.length; i++) {
-      const product = cookieValue[i];
-      if (product.name === productInfo.name) {
-        return true;
+    let cookieValue = this.cookieService.get("cart");
+    if (cookieValue) {
+      let productsInCart = JSON.parse(cookieValue);
+      for (let i = 0; i < productsInCart.length; i++) {
+        const product = productsInCart[i];
+        if (product._id === productInfo._id) {
+          return true;
+        }
       }
     }
     return false;
