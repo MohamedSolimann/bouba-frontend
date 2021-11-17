@@ -11,9 +11,7 @@ export class ProductBackendCallsService {
       headers: { "Content-Type": "Application/Json" },
     });
   }
-  getProductByCategory(category: String) {
-    let page = 0;
-    let limit = 5;
+  getProductByCategory(category: String, page, limit) {
     return this.myHttp.get(
       `http://localhost:8080/products/category/${category}/${page}/${limit}`,
       {
