@@ -1,5 +1,5 @@
 .navbar-brand {
-  margin-right: 28%;
+  margin-right: 25%;
   font-family: brands;
   font-size: 34px;
   font-weight: bold;
@@ -7,6 +7,9 @@
 }
 a {
   margin: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 0;
 }
 .nav-item {
   font-size: 20px;
@@ -15,8 +18,29 @@ a {
   margin-left: 10px;
 }
 .img-logo {
-  width: 200px;
+  width: 220px;
 }
 .logOutButton {
   cursor: pointer;
 }
+a:hover{
+  background-color: aqua;
+  border-radius: 5px;
+}
+.instagram{
+  padding-top: 20px;
+}
+@-webkit-keyframes blackWhite {  
+  0% { color: red; }
+  50% { color: red; }
+  51% { color: black; }
+  100% { color: black; }
+}
+
+.blinkdiv {
+    height: 100px;
+    color: red;
+    -webkit-animation-name: blackWhite;  
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 2s; 
+}  

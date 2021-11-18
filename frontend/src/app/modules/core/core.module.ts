@@ -18,6 +18,6 @@ import { FormsModule } from "@angular/forms";
     AdminComponent,
   ],
   imports: [CommonModule, FormsModule, CoreRouting],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent,FooterComponent],
 })
 export class CoreModule {}

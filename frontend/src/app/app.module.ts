@@ -5,8 +5,6 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import modulesRouter from "./app.routing";
 import { CartComponent } from "./modules/cart/cart.component";
-import { CoreModule } from "./modules/core/core.module";
-
 @NgModule({
   declarations: [AppComponent, CartComponent],
   imports: [

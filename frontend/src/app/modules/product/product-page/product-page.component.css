@@ -12,6 +12,7 @@
 .product-price {
   font-weight: bold;
   font-size: 20px;
+  padding-top: 5px;
 }
 .container {
   margin-top: 20px;
@@ -30,4 +31,7 @@ body {
 }
 button {
   margin: 10px;
+}
+.img-thumbnail{
+  border: none;
 }
