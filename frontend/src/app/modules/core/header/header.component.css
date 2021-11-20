@@ -4,6 +4,7 @@
   font-size: 34px;
   font-weight: bold;
   padding-left: 20px;
+  height: 100px;
 }
 a {
   margin: 10px;
@@ -38,7 +39,6 @@ a:hover{
 }
 
 .blinkdiv {
-    height: 100px;
     color: red;
     -webkit-animation-name: blackWhite;  
     -webkit-animation-iteration-count: infinite;  

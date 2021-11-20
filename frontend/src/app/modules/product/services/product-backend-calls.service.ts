@@ -1,19 +1,19 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-
+import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: "root",
 })
 export class ProductBackendCallsService {
   constructor(public myHttp: HttpClient) {}
   getAllProducts() {
-    return this.myHttp.get("http://localhost:8080/products", {
+    return this.myHttp.get(`http://${environment.host}:8080/products`, {
       headers: { "Content-Type": "Application/Json" },
     });
   }
   getProductByCategory(category: String, page, limit) {
     return this.myHttp.get(
-      `http://localhost:8080/products/category/${category}/${page}/${limit}`,
+      `http://${environment.host}:8080/products/category/${category}/${page}/${limit}`,
       {
         headers: { "Content-Type": "Application/Json" },
       }
@@ -21,7 +21,7 @@ export class ProductBackendCallsService {
   }
   updateProduct(productId, data) {
     return this.myHttp.put(
-      `http://localhost:8080/products/${productId}`,
+      `http://${environment.host}:8080/products/${productId}`,
       data,
       {
         headers: { "Content-Type": "Application/Json" },
@@ -29,9 +29,9 @@ export class ProductBackendCallsService {
     );
   }
   removeProduct(productId) {
-    return this.myHttp.delete(`http://localhost:8080/products/${productId}`);
+    return this.myHttp.delete(`http://${environment.host}:8080/products/${productId}`);
   }
   addProduct(data) {
-    return this.myHttp.post("http://localhost:8080/products", data);
+    return this.myHttp.post(`http://${environment.host}:8080/products`, data);
   }
 }
