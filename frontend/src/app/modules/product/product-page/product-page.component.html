@@ -18,7 +18,7 @@
         </button>
       </div>
     </div>
-    <div *ngIf="token">
+    <div >
       <h3>Admin Panel</h3>
       <div>
         <label for="productId">Product-Id : </label>
@@ -51,7 +51,8 @@
       </div>
       <div>
         <label for="product-image">Product Image : </label>
-        <input [(ngModel)]="productImage" type="file" id="product-image" />
+        <!-- <input [(ngModel)]="productImage" type="file" id="product-image" /> -->
+        <input [(ngModel)]="productImage" type="text" id="product-image" />
       </div>
       <p class="responseMessage">{{ responseMessage }}</p>
       <button (click)="handleAddProduct()" class="btn btn-success admin-button">
