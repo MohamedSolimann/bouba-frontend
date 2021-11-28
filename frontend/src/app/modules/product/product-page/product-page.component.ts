@@ -44,11 +44,15 @@ export class ProductPageComponent {
   public responseMessageAlert: string = "";
   @HostListener("window:scroll", ["$event"])
   onScroll(event: any) {
-    let end = 949;
+    let end = 949
+    let end1 =721.800048828125
+    console.log(document.documentElement.scrollTop)
     if (
-      document.documentElement.offsetHeight -
+    (  document.documentElement.offsetHeight -
         document.documentElement.scrollTop ===
-      end
+      end) ||    (  document.documentElement.offsetHeight -
+      document.documentElement.scrollTop ===
+    end1)
     ) {
       if (!this.responseMessageAlert) {
         this.handleGetProductsByCategory(this.page, this.limit);
@@ -57,7 +61,7 @@ export class ProductPageComponent {
   }
   handleGetProductsByCategory(page, limit) {
     this.productBackendCalls
-      .getProductByCategory(this.category, page, limit)
+      .getProductByCategory(this.category)
       .subscribe((res: any) => {
         if (res.message === "Success") {
           this.products = this.products.concat(res.data);

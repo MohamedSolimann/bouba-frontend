@@ -11,7 +11,7 @@ export class ProductBackendCallsService {
       headers: { "Content-Type": "Application/Json" },
     });
   }
-  getProductByCategory(category: String, page, limit) {
+  getProductByCategoryWithLimit(category: String, page, limit) {
     return this.myHttp.get(
       `http://${environment.host}:8080/products/category/${category}/${page}/${limit}`,
       {
@@ -19,6 +19,15 @@ export class ProductBackendCallsService {
       }
     );
   }
+  getProductByCategory(category: String) {
+    return this.myHttp.get(
+      `http://${environment.host}:8080/products/category`,
+      {
+        headers: { "Content-Type": "Application/Json" },
+      }
+    );
+  }
+
   updateProduct(productId, data) {
     return this.myHttp.put(
       `http://${environment.host}:8080/products/${productId}`,
