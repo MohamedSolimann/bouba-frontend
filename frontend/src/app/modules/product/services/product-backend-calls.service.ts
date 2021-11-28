@@ -21,7 +21,7 @@ export class ProductBackendCallsService {
   }
   getProductByCategory(category: String) {
     return this.myHttp.get(
-      `http://${environment.host}:8080/products/category`,
+      `http://${environment.host}:8080/products/category/${category}`,
       {
         headers: { "Content-Type": "Application/Json" },
       }
