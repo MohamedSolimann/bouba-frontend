@@ -26,11 +26,11 @@ export class ProductPageComponent {
   }
 
   public products: Array<any> = [];
-  public category: string = "";
-  public price: string = "";
+  public category: string = "Accessories";
+  public price: string = "150";
   public desc: string = "";
-  public stock: string = "";
-  public status: string = "";
+  public stock: string = "1";
+  public status: string = "Avaliable";
   public productId: any = "";
   public code: string = "";
   public productImage: string = "";
