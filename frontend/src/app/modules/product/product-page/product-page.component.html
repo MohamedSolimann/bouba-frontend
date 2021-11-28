@@ -73,6 +73,18 @@
       >
         Update Porduct
       </button>
+      <button
+      (click)="addMultipleProducts()"
+      class="btn btn-success admin-button"
+    >
+      Add Multiple Porducts <span>{{productsAdded}}</span>
+    </button>
+    <button
+    (click)="handleAddallProducts()"
+    class="btn btn-success admin-button"
+  >
+    Add All Porducts
+  </button>
     </div>
   </div>
 </body>

@@ -27,7 +27,14 @@ export class ProductBackendCallsService {
       }
     );
   }
-
+  addMultipleProducts(arrayOfProducts: any) {
+    return this.myHttp.post(
+      `http://${environment.host}:8080/products/category/`,arrayOfProducts,
+      {
+        headers: { "Content-Type": "Application/Json" },
+      }
+    );
+  }
   updateProduct(productId, data) {
     return this.myHttp.put(
       `http://${environment.host}:8080/products/${productId}`,

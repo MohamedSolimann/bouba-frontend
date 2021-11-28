@@ -42,6 +42,9 @@ export class ProductPageComponent {
   public page: number = 1;
   public limit: number = 5;
   public responseMessageAlert: string = "";
+  public ArrayOfProducts :Array<any> = []
+  public fileLocation = ""
+  public productsAdded : number = 0
   @HostListener("window:scroll", ["$event"])
   onScroll(event: any) {
     let end = 949
@@ -145,14 +148,17 @@ export class ProductPageComponent {
         }
       });
   }
+ async fileLocationOnS3(){
+  this.fileLocation = await Promise.resolve(
+    this.myAWSService.uploadFile(
+      this.uploadedFile,
+      this.productCategory.toLowerCase()
+    )
+  );
+  }
   async handleAddProduct() {
-    let fileLocation = await Promise.resolve(
-      this.myAWSService.uploadFile(
-        this.uploadedFile,
-        this.productCategory.toLowerCase()
-      )
-    );
-    const { price, stock, status, desc, productCategory, code } = this;
+    await this.fileLocationOnS3()
+    const { price, stock, status, desc, productCategory, code ,fileLocation} = this;
     const data = {
       price,
       stock,
@@ -170,6 +176,29 @@ export class ProductPageComponent {
         }, 1000);
       }
     });
+  }
+ async addMultipleProducts(){
+    await this.fileLocationOnS3()
+    const { price, stock, status, desc, productCategory, code ,fileLocation} = this;
+    const data = {
+      price,
+      stock,
+      status,
+      desc,
+      category: productCategory,
+      code,
+      image: fileLocation,
+    };
+    this.ArrayOfProducts.push(data)
+    this.productsAdded++
+    console.log(this.ArrayOfProducts)
+  }
+  handleAddallProducts(){
+    this.productBackendCalls.addMultipleProducts(this.ArrayOfProducts).subscribe((res:any)=>{
+      if(res.message ==="Success"){
+        this.myNavigation.refreshPage('/products/Accessories')
+      }
+    })
   }
   userAuthentication() {
     this.token = this.cookieService.check("token");
