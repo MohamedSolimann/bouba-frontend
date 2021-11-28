@@ -51,7 +51,12 @@
       </div>
       <div>
         <label for="product-image">Product Image : </label>
-        <input [(ngModel)]="productImage" type="file" id="product-image" />
+        <input
+          (change)="fileUploaded($event)"
+          accept="/*image"
+          type="file"
+          id="productImage"
+        />
       </div>
       <p class="responseMessage">{{ responseMessage }}</p>
       <button (click)="handleAddProduct()" class="btn btn-success admin-button">

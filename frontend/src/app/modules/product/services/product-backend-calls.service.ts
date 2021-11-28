@@ -29,7 +29,9 @@ export class ProductBackendCallsService {
     );
   }
   removeProduct(productId) {
-    return this.myHttp.delete(`http://${environment.host}:8080/products/${productId}`);
+    return this.myHttp.delete(
+      `http://${environment.host}:8080/products/${productId}`
+    );
   }
   addProduct(data) {
     return this.myHttp.post(`http://${environment.host}:8080/products`, data);

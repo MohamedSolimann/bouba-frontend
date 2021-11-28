@@ -2,7 +2,9 @@ import { Component, HostListener } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
 import { NavigationService } from "src/app/service/navigation.service";
+import { AWSService } from "../services/aws.service";
 import { ProductBackendCallsService } from "../services/product-backend-calls.service";
+import { environment } from "src/environments/environment.prod";
 
 @Component({
   selector: "app-product-page",
@@ -14,11 +16,13 @@ export class ProductPageComponent {
     public productBackendCalls: ProductBackendCallsService,
     public myActivedRouter: ActivatedRoute,
     public cookieService: CookieService,
-    public myNavigation: NavigationService
+    public myNavigation: NavigationService,
+    public myAWSService: AWSService
   ) {
     this.category = myActivedRouter.snapshot.params.category;
     this.handleGetProductsByCategory(this.page, this.limit);
     this.userAuthentication();
+    this.myAWSService.initializeS3Interface();
   }
 
   public products: Array<any> = [];
@@ -30,6 +34,7 @@ export class ProductPageComponent {
   public productId: any = "";
   public code: string = "";
   public productImage: string = "";
+  public uploadedFile: string = "";
   public productCategory: string = "";
   public responseMessage: string = "";
   public product: any = {};
@@ -136,8 +141,16 @@ export class ProductPageComponent {
         }
       });
   }
-  handleAddProduct() {
-    const { price, stock, status, desc, productCategory, code, productImage } =
+  async handleAddProduct() {
+    let fileLocation = await Promise.resolve(
+      this.myAWSService.uploadFile(
+        this.uploadedFile,
+        this.productCategory.toLowerCase()
+      )
+    );
+    debugger;
+    console.log(fileLocation);
+    const { price, stock, status, desc, productCategory, code, uploadedFile } =
       this;
     const data = {
       price,
@@ -146,19 +159,21 @@ export class ProductPageComponent {
       desc,
       category: productCategory,
       code,
-      image: productImage,
+      image: uploadedFile,
     };
-    this.productBackendCalls.addProduct(data).subscribe((res: any) => {
-      debugger;
-      if (res.message === "Created Successfuly") {
-        this.responseMessage = res.message;
-        setTimeout(() => {
-          this.myNavigation.refreshPage(`/product/${this.category}`);
-        }, 1000);
-      }
-    });
+    // this.productBackendCalls.addProduct(data).subscribe((res: any) => {
+    //   if (res.message === "Created Successfuly") {
+    //     this.responseMessage = res.message;
+    //     setTimeout(() => {
+    //       this.myNavigation.refreshPage(`/product/${this.category}`);
+    //     }, 1000);
+    //   }
+    // });
   }
   userAuthentication() {
     this.token = this.cookieService.check("token");
+  }
+  fileUploaded(event) {
+    this.uploadedFile = event.target.files[0];
   }
 }
