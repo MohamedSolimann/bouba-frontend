@@ -148,10 +148,7 @@ export class ProductPageComponent {
         this.productCategory.toLowerCase()
       )
     );
-    debugger;
-    console.log(fileLocation);
-    const { price, stock, status, desc, productCategory, code, uploadedFile } =
-      this;
+    const { price, stock, status, desc, productCategory, code } = this;
     const data = {
       price,
       stock,
@@ -159,16 +156,16 @@ export class ProductPageComponent {
       desc,
       category: productCategory,
       code,
-      image: uploadedFile,
+      image: fileLocation,
     };
-    // this.productBackendCalls.addProduct(data).subscribe((res: any) => {
-    //   if (res.message === "Created Successfuly") {
-    //     this.responseMessage = res.message;
-    //     setTimeout(() => {
-    //       this.myNavigation.refreshPage(`/product/${this.category}`);
-    //     }, 1000);
-    //   }
-    // });
+    this.productBackendCalls.addProduct(data).subscribe((res: any) => {
+      if (res.message === "Created Successfuly") {
+        this.responseMessage = res.message;
+        setTimeout(() => {
+          this.myNavigation.refreshPage(`/product/${this.category}`);
+        }, 1000);
+      }
+    });
   }
   userAuthentication() {
     this.token = this.cookieService.check("token");
