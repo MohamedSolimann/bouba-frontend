@@ -9,7 +9,7 @@ export class CartBackendCallsService {
   constructor(public myHttp: HttpClient) {}
 
   sumbitOrder(data: object) {
-    return this.myHttp.post(`http://${environment.host}:8080/order`, data, {
+    return this.myHttp.post(`https://${environment.host}/order`, data, {
       headers: { 'Content-Type': 'Application/JSON' },
     });
   }

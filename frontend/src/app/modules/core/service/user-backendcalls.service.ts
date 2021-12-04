@@ -9,7 +9,7 @@ export class UserBackendcallsService {
   constructor(public myHttp: HttpClient) {}
   handleSignIn(data) {
     return this.myHttp.post(
-      `http://${environment.host}:8080/user/signin`,
+      `https://${environment.host}/user/signin`,
       data,
       {
         headers: { "Contet-Type": "Application/JSON" },
@@ -18,7 +18,7 @@ export class UserBackendcallsService {
     );
   }
   handleSignOut() {
-    return this.myHttp.get(`http://${environment.host}:8080/user/signout`, {
+    return this.myHttp.get(`https://${environment.host}/user/signout`, {
       withCredentials: true,
     });
   }

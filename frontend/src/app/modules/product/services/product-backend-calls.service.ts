@@ -7,13 +7,13 @@ import { environment } from "src/environments/environment";
 export class ProductBackendCallsService {
   constructor(public myHttp: HttpClient) {}
   getAllProducts() {
-    return this.myHttp.get(`http://${environment.host}:8080/products`, {
+    return this.myHttp.get(`https://${environment.host}/products`, {
       headers: { "Content-Type": "Application/Json" },
     });
   }
   getProductByCategoryWithLimit(category: String, page, limit) {
     return this.myHttp.get(
-      `http://${environment.host}:8080/products/category/${category}/${page}/${limit}`,
+      `https://${environment.host}/products/category/${category}/${page}/${limit}`,
       {
         headers: { "Content-Type": "Application/Json" },
       }
@@ -21,7 +21,7 @@ export class ProductBackendCallsService {
   }
   getProductByCategory(category: String) {
     return this.myHttp.get(
-      `http://${environment.host}:8080/products/category/${category}`,
+      `https://${environment.host}/products/category/${category}`,
       {
         headers: { "Content-Type": "Application/Json" },
       }
@@ -29,7 +29,7 @@ export class ProductBackendCallsService {
   }
   addMultipleProducts(arrayOfProducts: any) {
     return this.myHttp.post(
-      `http://${environment.host}:8080/products/category/`,arrayOfProducts,
+      `https://${environment.host}/products/category/`,arrayOfProducts,
       {
         headers: { "Content-Type": "Application/Json" },
       }
@@ -37,7 +37,7 @@ export class ProductBackendCallsService {
   }
   updateProduct(productId, data) {
     return this.myHttp.put(
-      `http://${environment.host}:8080/products/${productId}`,
+      `https://${environment.host}/products/${productId}`,
       data,
       {
         headers: { "Content-Type": "Application/Json" },
@@ -46,10 +46,10 @@ export class ProductBackendCallsService {
   }
   removeProduct(productId) {
     return this.myHttp.delete(
-      `http://${environment.host}:8080/products/${productId}`
+      `https://${environment.host}/products/${productId}`
     );
   }
   addProduct(data) {
-    return this.myHttp.post(`http://${environment.host}:8080/products`, data);
+    return this.myHttp.post(`https://${environment.host}/products`, data);
   }
 }
