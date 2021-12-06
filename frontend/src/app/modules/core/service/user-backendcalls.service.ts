@@ -9,7 +9,7 @@ export class UserBackendcallsService {
   constructor(public myHttp: HttpClient) {}
   handleSignIn(data) {
     return this.myHttp.post(
-      `${environment.protocol}://${environment.host}/user/signin`,
+      `${environment.protocol}://${environment.host}:${environment.port}/user/signin`,
       data,
       {
         headers: { "Contet-Type": "Application/JSON" },
@@ -18,7 +18,7 @@ export class UserBackendcallsService {
     );
   }
   handleSignOut() {
-    return this.myHttp.get(`${environment.protocol}://${environment.host}/user/signout`, {
+    return this.myHttp.get(`${environment.protocol}://${environment.host}:${environment.port}/user/signout`, {
       withCredentials: true,
     });
   }
