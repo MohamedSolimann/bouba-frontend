@@ -4,5 +4,7 @@ export const environment = {
     AccessKey: "AKIAV3KXYYWZSYLXWDNU",
     SecrectKey: "AGTm6hWih+pBZpnu8rDGmEFkMr56q2/LBWnJp64z",
   },
+  protocol : 'http',
+
   production: true,
 };
