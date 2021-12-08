@@ -1,4 +1,4 @@
-<body (scroll)="onScroll($event)">
+<body>
   <app-header></app-header>
   <div id="body" class="container">
     <div class="row">
@@ -9,10 +9,7 @@
         <button (click)="addToCart(product)" class="btn btn-primary">
           Addt To Cart
         </button>
-        <button
-          (click)="getProductid(product)"
-          class="btn btn-primary"
-        >
+        <button (click)="getProductid(product)" class="btn btn-primary">
           Get Product Id
         </button>
       </div>
@@ -74,17 +71,17 @@
         Update Porduct
       </button>
       <button
-      (click)="addMultipleProducts()"
-      class="btn btn-success admin-button"
-    >
-      Add Multiple Porducts <span>{{productsAdded}}</span>
-    </button>
-    <button
-    (click)="handleAddallProducts()"
-    class="btn btn-success admin-button"
-  >
-    Add All Porducts
-  </button>
+        (click)="addMultipleProducts()"
+        class="btn btn-success admin-button"
+      >
+        Add Multiple Porducts <span>{{ productsAdded }}</span>
+      </button>
+      <button
+        (click)="handleAddallProducts()"
+        class="btn btn-success admin-button"
+      >
+        Add All Porducts
+      </button>
     </div>
   </div>
 </body>

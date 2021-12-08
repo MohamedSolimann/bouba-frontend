@@ -26,11 +26,11 @@ export class ProductPageComponent {
   }
 
   public products: Array<any> = [];
-  public category: string = "";
-  public price: string = "";
+  public category: string = "Accessories";
+  public price: string = "150";
   public desc: string = "";
-  public stock: string = "";
-  public status: string = "";
+  public stock: string = "1";
+  public status: string = "Avaliable";
   public productId: any = "";
   public code: string = "";
   public productImage: string = "";
@@ -42,26 +42,26 @@ export class ProductPageComponent {
   public page: number = 1;
   public limit: number = 5;
   public responseMessageAlert: string = "";
-  public ArrayOfProducts :Array<any> = []
-  public fileLocation = ""
-  public productsAdded : number = 0
+  public ArrayOfProducts: Array<any> = [];
+  public fileLocation = "";
+  public productsAdded: number = 0;
   @HostListener("window:scroll", ["$event"])
-  onScroll(event: any) {
-    let end = 949
-    let end1 =721.800048828125
-    console.log(document.documentElement.scrollTop)
-    if (
-    (  document.documentElement.offsetHeight -
-        document.documentElement.scrollTop ===
-      end) ||    (  document.documentElement.offsetHeight -
-      document.documentElement.scrollTop ===
-    end1)
-    ) {
-      if (!this.responseMessageAlert) {
-        this.handleGetProductsByCategory(this.page, this.limit);
-      }
-    }
-  }
+  // onScroll(event: any) {
+  //   let end = 949
+  //   let end1 =721.800048828125
+  //   console.log(document.documentElement.scrollTop)
+  //   if (
+  //   (  document.documentElement.offsetHeight -
+  //       document.documentElement.scrollTop ===
+  //     end) ||    (  document.documentElement.offsetHeight -
+  //     document.documentElement.scrollTop ===
+  //   end1)
+  //   ) {
+  //     if (!this.responseMessageAlert) {
+  //       this.handleGetProductsByCategory(this.page, this.limit);
+  //     }
+  //   }
+  // }
   handleGetProductsByCategory(page, limit) {
     this.productBackendCalls
       .getProductByCategory(this.category)
@@ -148,17 +148,18 @@ export class ProductPageComponent {
         }
       });
   }
- async fileLocationOnS3(){
-  this.fileLocation = await Promise.resolve(
-    this.myAWSService.uploadFile(
-      this.uploadedFile,
-      this.productCategory.toLowerCase()
-    )
-  );
+  async fileLocationOnS3() {
+    this.fileLocation = await Promise.resolve(
+      this.myAWSService.uploadFile(
+        this.uploadedFile,
+        this.productCategory.toLowerCase()
+      )
+    );
   }
   async handleAddProduct() {
-    await this.fileLocationOnS3()
-    const { price, stock, status, desc, productCategory, code ,fileLocation} = this;
+    await this.fileLocationOnS3();
+    const { price, stock, status, desc, productCategory, code, fileLocation } =
+      this;
     const data = {
       price,
       stock,
@@ -177,9 +178,10 @@ export class ProductPageComponent {
       }
     });
   }
- async addMultipleProducts(){
-    await this.fileLocationOnS3()
-    const { price, stock, status, desc, productCategory, code ,fileLocation} = this;
+  async addMultipleProducts() {
+    await this.fileLocationOnS3();
+    const { price, stock, status, desc, productCategory, code, fileLocation } =
+      this;
     const data = {
       price,
       stock,
@@ -189,16 +191,18 @@ export class ProductPageComponent {
       code,
       image: fileLocation,
     };
-    this.ArrayOfProducts.push(data)
-    this.productsAdded++
-    console.log(this.ArrayOfProducts)
+    this.ArrayOfProducts.push(data);
+    this.productsAdded++;
+    console.log(this.ArrayOfProducts);
   }
-  handleAddallProducts(){
-    this.productBackendCalls.addMultipleProducts(this.ArrayOfProducts).subscribe((res:any)=>{
-      if(res.message ==="Success"){
-        this.myNavigation.refreshPage('/products/Accessories')
-      }
-    })
+  handleAddallProducts() {
+    this.productBackendCalls
+      .addMultipleProducts(this.ArrayOfProducts)
+      .subscribe((res: any) => {
+        if (res.message === "Success") {
+          this.myNavigation.refreshPage("/products/Accessories");
+        }
+      });
   }
   userAuthentication() {
     this.token = this.cookieService.check("token");
