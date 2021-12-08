@@ -26,13 +26,13 @@ export class ProductPageComponent {
   }
 
   public products: Array<any> = [];
-  public category: string = "Accessories";
-  public price: string = "150";
+  public category: string = "";
+  public price: string = "";
   public desc: string = "";
-  public stock: string = "1";
-  public status: string = "Avaliable";
+  public stock: string = "";
+  public status: string = "";
   public productId: any = "";
-  public code: string = "";
+  public code: number = 3;
   public productImage: string = "";
   public uploadedFile: string = "";
   public productCategory: string = "";
@@ -135,6 +135,7 @@ export class ProductPageComponent {
           setTimeout(() => {
             this.myNavigation.refreshPage(`/product/${this.product.category}`);
           }, 1000);
+          this.code++;
         }
       });
   }
