@@ -20,7 +20,7 @@ export class ProductPageComponent {
     public myAWSService: AWSService
   ) {
     this.category = myActivedRouter.snapshot.params.category;
-    this.handleGetProductsByCategory(this.page, this.limit);
+    this.handleGetProductsByCategory();
     this.userAuthentication();
     this.myAWSService.initializeS3Interface();
   }
@@ -45,7 +45,7 @@ export class ProductPageComponent {
   public ArrayOfProducts: Array<any> = [];
   public fileLocation = "";
   public productsAdded: number = 0;
-  @HostListener("window:scroll", ["$event"])
+  // @HostListener("window:scroll", ["$event"])
   // onScroll(event: any) {
   //   let end = 949
   //   let end1 =721.800048828125
@@ -62,7 +62,7 @@ export class ProductPageComponent {
   //     }
   //   }
   // }
-  handleGetProductsByCategory(page, limit) {
+  handleGetProductsByCategory() {
     this.productBackendCalls
       .getProductByCategory(this.category)
       .subscribe((res: any) => {
