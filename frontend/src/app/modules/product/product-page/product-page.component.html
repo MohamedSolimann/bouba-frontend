@@ -2,7 +2,7 @@
   <app-header></app-header>
   <div id="body" class="container">
     <div class="row">
-      <div class="col-lg-4 product" *ngFor="let product of products">
+      <div class="col-md-4 product" *ngFor="let product of products">
         <img [src]="product.image" class="img-thumbnail product-image" alt="" />
         <p class="product-price">{{ product.price }}.0EGP</p>
         <p class="product-desc">{{ product.desc }}</p>
