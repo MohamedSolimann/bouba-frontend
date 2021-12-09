@@ -2,9 +2,7 @@
   margin-top: 20px;
   text-align: center;
 }
-.product-image {
-  /* height: 330px; */
-}
+
 .product-name {
   margin-top: 20px;
   font-size: 20px;
@@ -34,4 +32,7 @@ button {
 }
 .img-thumbnail{
   border: none;
+}
+@media (min-width:760px) {
+  #product-image{height: 380px;}
 }

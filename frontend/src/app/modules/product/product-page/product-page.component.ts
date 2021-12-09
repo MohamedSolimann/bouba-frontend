@@ -32,7 +32,7 @@ export class ProductPageComponent {
   public stock: string = "";
   public status: string = "";
   public productId: any = "";
-  public code: number = 3;
+  public productCode: number = 3;
   public productImage: string = "";
   public uploadedFile: string = "";
   public productCategory: string = "";
@@ -104,8 +104,9 @@ export class ProductPageComponent {
     return false;
   }
   getProductid(product: any) {
+    this.product= product
     this.productId = product._id;
-    this.product = product;
+    this.productCode = product.code;
   }
   handleUpdateProduct() {
     const {
@@ -115,7 +116,7 @@ export class ProductPageComponent {
       status,
       desc,
       productCategory,
-      code,
+      productCode,
       productImage,
     } = this;
     const data = {
@@ -124,7 +125,7 @@ export class ProductPageComponent {
       status,
       desc,
       category: productCategory,
-      code,
+      code :productCode,
       image: productImage,
     };
     this.productBackendCalls
@@ -135,7 +136,7 @@ export class ProductPageComponent {
           setTimeout(() => {
             this.myNavigation.refreshPage(`/product/${this.product.category}`);
           }, 1000);
-          this.code++;
+          this.productCode++;
         }
       });
   }
@@ -159,7 +160,7 @@ export class ProductPageComponent {
   }
   async handleAddProduct() {
     await this.fileLocationOnS3();
-    const { price, stock, status, desc, productCategory, code, fileLocation } =
+    const { price, stock, status, desc, productCategory, productCode, fileLocation } =
       this;
     const data = {
       price,
@@ -167,7 +168,7 @@ export class ProductPageComponent {
       status,
       desc,
       category: productCategory,
-      code,
+      code :productCode,
       image: fileLocation,
     };
     this.productBackendCalls.addProduct(data).subscribe((res: any) => {
@@ -181,7 +182,7 @@ export class ProductPageComponent {
   }
   async addMultipleProducts() {
     await this.fileLocationOnS3();
-    const { price, stock, status, desc, productCategory, code, fileLocation } =
+    const { price, stock, status, desc, productCategory, productCode, fileLocation } =
       this;
     const data = {
       price,
@@ -189,7 +190,7 @@ export class ProductPageComponent {
       status,
       desc,
       category: productCategory,
-      code,
+      code :productCode,
       image: fileLocation,
     };
     this.ArrayOfProducts.push(data);

@@ -2,8 +2,8 @@
   <app-header></app-header>
   <div id="body" class="container">
     <div class="row">
-      <div class="col-md-4 product" *ngFor="let product of products">
-        <img [src]="product.image" class="img-thumbnail product-image" alt="" />
+      <div class="col-lg-4 product" *ngFor="let product of products">
+        <img id="product-image" [src]="product.image" class="img-thumbnail" alt="" />
         <p class="product-price">{{ product.price }}.0EGP</p>
         <p class="product-desc">{{ product.desc }}</p>
         <button (click)="addToCart(product)" class="btn btn-primary">
@@ -42,8 +42,8 @@
         <input [(ngModel)]="status" type="text" id="status" />
       </div>
       <div>
-        <label for="code">Code : </label>
-        <input [(ngModel)]="code" type="text" id="code" />
+        <label for="productCode">Code : </label>
+        <input [(ngModel)]="productCode" type="text" id="productCode" />
       </div>
       <div>
         <label for="product-image">Product Image : </label>
