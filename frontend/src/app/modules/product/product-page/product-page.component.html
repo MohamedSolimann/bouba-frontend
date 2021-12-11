@@ -9,7 +9,7 @@
         <button (click)="addToCart(product)" class="btn btn-primary">
           Addt To Cart
         </button>
-        <button (click)="getProductid(product)" class="btn btn-primary">
+        <button (click)="getProduct(product)" class="btn btn-primary">
           Get Product Id
         </button>
       </div>
@@ -43,7 +43,7 @@
       </div>
       <div>
         <label for="code">Code : </label>
-        <input [(ngModel)]="code" type="text" id="code" />
+        <input [(ngModel)]="code" type="text" id="code" value="product.code" />
       </div>
       <div>
         <label for="product-image">Product Image : </label>
