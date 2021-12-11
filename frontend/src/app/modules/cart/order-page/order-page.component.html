@@ -109,6 +109,9 @@
       >
         Appartment is required
       </p>
+      <p class="sucess" *ngIf="responseMessage ? true : false">
+        Order Placed Successfully
+      </p>
       <div>
         <button
           [disabled]="
@@ -125,10 +128,7 @@
           Place Order
         </button>
       </div>
-      <p class="sucess" *ngIf="responseMessage ? true : false">
-        Order Placed Successfully
-      </p>
-    </div>
+      </div>
   </div>
   <div class="col-md-8">
     <app-maps (AddressEmit)="getAddress($event)"></app-maps>

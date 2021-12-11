@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CookieService } from "ngx-cookie-service";
+import { NavigationService } from "src/app/service/navigation.service";
 import { CartBackendCallsService } from "../services/cart-backendCalls.service";
 
 @Component({
@@ -10,7 +11,8 @@ import { CartBackendCallsService } from "../services/cart-backendCalls.service";
 export class OrderPageComponent implements OnInit {
   constructor(
     public cartBackendCalls: CartBackendCallsService,
-    public cookieService: CookieService
+    public cookieService: CookieService,
+    public myNavigation : NavigationService
   ) {
     this.getCookies("cart");
   }
@@ -50,6 +52,10 @@ export class OrderPageComponent implements OnInit {
       if (res.message === "Success") {
         this.responseMessage = "Order Successfully";
         this.cookieService.delete("cart");
+        setTimeout(() => {
+          this.myNavigation.navigateByURL('/')
+          
+        }, 2000);
       }
     });
   }
