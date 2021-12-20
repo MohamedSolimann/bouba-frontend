@@ -20,7 +20,7 @@ export class ProductPageComponent {
     public myAWSService: AWSService
   ) {
     this.category = myActivedRouter.snapshot.params.category;
-    this.handleGetProductsByCategory();
+    this.getProductByCategoryWithLimit(this.page, this.limit);
     this.userAuthentication();
     this.myAWSService.initializeS3Interface();
   }
@@ -45,26 +45,18 @@ export class ProductPageComponent {
   public ArrayOfProducts: Array<any> = [];
   public fileLocation = "";
   public productsAdded: number = 0;
-  // @HostListener("window:scroll", ["$event"])
-  // onScroll(event: any) {
-  //   let end = 949
-  //   let end1 =721.800048828125
-  //   console.log(document.documentElement.scrollTop)
-  //   if (
-  //   (  document.documentElement.offsetHeight -
-  //       document.documentElement.scrollTop ===
-  //     end) ||    (  document.documentElement.offsetHeight -
-  //     document.documentElement.scrollTop ===
-  //   end1)
-  //   ) {
-  //     if (!this.responseMessageAlert) {
-  //       this.handleGetProductsByCategory(this.page, this.limit);
-  //     }
-  //   }
-  // }
-  handleGetProductsByCategory() {
+  @HostListener("window:scroll", ["$event"])
+  onScroll(event: any) {
+    console.log("page of sett" + window.pageYOffset);
+    console.log("inner height" + window.innerHeight);
+    console.log("document height" + document.body.offsetHeight);
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+      this.getProductByCategoryWithLimit(this.page, this.limit);
+    }
+  }
+  getProductByCategoryWithLimit(page, limit) {
     this.productBackendCalls
-      .getProductByCategory(this.category)
+      .getProductByCategoryWithLimit(this.category, page, limit)
       .subscribe((res: any) => {
         if (res.message === "Success") {
           this.products = this.products.concat(res.data);
@@ -103,10 +95,15 @@ export class ProductPageComponent {
     }
     return false;
   }
+<<<<<<< HEAD
   getProductid(product: any) {
     this.product= product
     this.productId = product._id;
     this.productCode = product.code;
+=======
+  getProduct(product: any) {
+    this.product = product;
+>>>>>>> 9c3c179c89b5f3f56b1f96a18f5c88fd2f55ec52
   }
   handleUpdateProduct() {
     const {
