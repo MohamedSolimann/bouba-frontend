@@ -32,6 +32,7 @@ export class ProductPageComponent {
   public stock: string = "";
   public status: string = "";
   public productId: any = "";
+  public code: any = "";
   public productCode: number = 3;
   public productImage: string = "";
   public uploadedFile: string = "";
@@ -95,15 +96,10 @@ export class ProductPageComponent {
     }
     return false;
   }
-<<<<<<< HEAD
-  getProductid(product: any) {
+  getProduct(product: any) {
     this.product= product
     this.productId = product._id;
     this.productCode = product.code;
-=======
-  getProduct(product: any) {
-    this.product = product;
->>>>>>> 9c3c179c89b5f3f56b1f96a18f5c88fd2f55ec52
   }
   handleUpdateProduct() {
     const {
