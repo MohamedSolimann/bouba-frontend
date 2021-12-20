@@ -48,9 +48,6 @@ export class ProductPageComponent {
   public productsAdded: number = 0;
   @HostListener("window:scroll", ["$event"])
   onScroll(event: any) {
-    console.log("page of sett" + window.pageYOffset);
-    console.log("inner height" + window.innerHeight);
-    console.log("document height" + document.body.offsetHeight);
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
       this.getProductByCategoryWithLimit(this.page, this.limit);
     }
