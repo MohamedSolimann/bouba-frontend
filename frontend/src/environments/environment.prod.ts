@@ -5,7 +5,7 @@ export const environment = {
     SecrectKey: "",
   },
   port: "8080",
-  protocol: "http",
+  protocol: "https",
 
   production: true,
 };
