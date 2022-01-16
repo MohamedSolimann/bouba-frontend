@@ -8,6 +8,9 @@ import { CoreComponent } from "./core.component";
 import { CoreRouting } from "./core.routes";
 import { AdminComponent } from "./admin/admin.component";
 import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { CarouselModule } from "ngx-owl-carousel-o";
+import { CarouselComponent } from './carousel/carousel.component';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -16,8 +19,15 @@ import { FormsModule } from "@angular/forms";
     BodyComponent,
     CoreComponent,
     AdminComponent,
+    CarouselComponent,
   ],
-  imports: [CommonModule, FormsModule, CoreRouting],
-  exports: [HeaderComponent,FooterComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CoreRouting,
+    RouterModule,
+    CarouselModule,
+  ],
+  exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}
