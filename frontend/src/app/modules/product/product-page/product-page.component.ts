@@ -108,6 +108,7 @@ export class ProductPageComponent {
       productCategory,
       productCode,
       productImage,
+      priceOnSale,
     } = this;
     const data = {
       price,
@@ -117,6 +118,7 @@ export class ProductPageComponent {
       category: productCategory,
       code: productCode,
       image: productImage,
+      priceOnSale,
     };
     this.productBackendCalls
       .updateProduct(productId, data)
