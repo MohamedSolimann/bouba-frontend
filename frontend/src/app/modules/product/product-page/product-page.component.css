@@ -1,19 +1,28 @@
 .product {
   margin-top: 20px;
   text-align: center;
+  position: relative;
 }
-
 .product-name {
   margin-top: 20px;
   font-size: 20px;
 }
+
 .product-price {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
   padding-top: 5px;
+}
+.product-priceOnSale {
+  font-weight: bold;
+  font-size: 25px;
+  padding-top: 5px;
+  text-decoration-line: line-through;
+  color: lightgrey;
 }
 .container {
   margin-top: 20px;
+  background-color: white;
 }
 body {
   font-family: sans-serif;
@@ -30,9 +39,51 @@ body {
 button {
   margin: 10px;
 }
-.img-thumbnail{
+.img-thumbnail {
   border: none;
 }
-@media (min-width:760px) {
-  #product-image{height: 380px;}
+.top-left-chineseGold {
+  position: absolute;
+  top: 8px;
+  left: 35px;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 0 3px;
+}
+.top-left-bags {
+  position: absolute;
+  top: 8px;
+  left: 55px;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 0 3px;
+}
+.top-left-accessories {
+  position: absolute;
+  top: 8px;
+  left: 100px;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 0 3px;
+}
+.top-left-shawls {
+  position: absolute;
+  top: 8px;
+  left: 65px;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 0 3px;
+}
+@media (min-width: 760px) {
+  #product-image {
+    height: 380px;
+  }
+}
+@media (max-width: 760px) {
+  #textOnImage {
+    left: 16px;
+  }
+}
+body {
+  background-color: #eaeded;
 }

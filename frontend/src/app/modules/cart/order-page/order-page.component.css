@@ -19,3 +19,6 @@ input {
   color: red;
   font-size: 12px;
 }
+.row {
+  background-color: white;
+}

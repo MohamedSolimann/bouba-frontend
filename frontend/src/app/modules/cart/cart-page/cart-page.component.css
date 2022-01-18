@@ -50,6 +50,11 @@ hr {
   padding-top: 20px;
   text-align: center;
 }
-@media(max-width:762px) {
-  #table-header { display:none;}
+.container {
+  background-color: white;
+}
+@media (max-width: 762px) {
+  #table-header {
+    display: none;
+  }
 }

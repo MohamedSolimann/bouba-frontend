@@ -3,18 +3,45 @@
   <div id="body" class="container">
     <div class="row">
       <div class="col-lg-4 product" *ngFor="let product of products">
-        <img id="product-image" [src]="product.image" class="img-thumbnail" alt="" />
-        <p class="product-price">{{ product.price }}.0EGP</p>
+        <img
+          id="product-image"
+          [src]="product.image"
+          class="img-thumbnail"
+          alt=""
+        />
+        <p
+          id="textOnImage"
+          [ngClass]="adjustHeight(product.category)"
+          [ngStyle]="{
+            'background-color': product.status === 'On Sale' ? 'red' : '#ADFF2F'
+          }"
+        >
+          {{ product.status }}
+        </p>
+        <p class="product-price">
+          <span
+            [ngClass]="
+              product.status === 'On Sale'
+                ? 'product-priceOnSale'
+                : 'product-price'
+            "
+            >{{ product.price }}.0EGP</span
+          >
+
+          <span class="product-price" *ngIf="product.status === 'On Sale'">
+            {{ product.priceOnSale }}.0EGP
+          </span>
+        </p>
         <p class="product-desc">{{ product.desc }}</p>
         <button (click)="addToCart(product)" class="btn btn-primary">
           Addt To Cart
         </button>
-        <button *ngIf='token' (click)="getProduct(product)" class="btn btn-primary">
+        <button (click)="getProduct(product)" class="btn btn-primary">
           Get Product Id
         </button>
       </div>
     </div>
-    <div *ngIf='token'>
+    <div>
       <h3>Admin Panel</h3>
       <div>
         <label for="productId">Product-Id : </label>
@@ -24,6 +51,10 @@
       <div>
         <label for="price">Price : </label>
         <input [(ngModel)]="price" type="text" id="price" />
+      </div>
+      <div>
+        <label for="priceOnSale">PriceOnSale : </label>
+        <input [(ngModel)]="priceOnSale" type="text" id="priceOnSale" />
       </div>
       <div>
         <label for="desc">Desc : </label>

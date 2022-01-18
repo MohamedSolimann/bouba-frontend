@@ -4,7 +4,6 @@ import { CookieService } from "ngx-cookie-service";
 import { NavigationService } from "src/app/service/navigation.service";
 import { AWSService } from "../services/aws.service";
 import { ProductBackendCallsService } from "../services/product-backend-calls.service";
-import { environment } from "src/environments/environment.prod";
 
 @Component({
   selector: "app-product-page",
@@ -28,6 +27,7 @@ export class ProductPageComponent {
   public products: Array<any> = [];
   public category: string = "";
   public price: string = "";
+  public priceOnSale: string = "";
   public desc: string = "";
   public stock: string = "";
   public status: string = "";
@@ -94,7 +94,7 @@ export class ProductPageComponent {
     return false;
   }
   getProduct(product: any) {
-    this.product= product
+    this.product = product;
     this.productId = product._id;
     this.productCode = product.code;
   }
@@ -115,7 +115,7 @@ export class ProductPageComponent {
       status,
       desc,
       category: productCategory,
-      code :productCode,
+      code: productCode,
       image: productImage,
     };
     this.productBackendCalls
@@ -150,15 +150,22 @@ export class ProductPageComponent {
   }
   async handleAddProduct() {
     await this.fileLocationOnS3();
-    const { price, stock, status, desc, productCategory, productCode, fileLocation } =
-      this;
+    const {
+      price,
+      stock,
+      status,
+      desc,
+      productCategory,
+      productCode,
+      fileLocation,
+    } = this;
     const data = {
       price,
       stock,
       status,
       desc,
       category: productCategory,
-      code :productCode,
+      code: productCode,
       image: fileLocation,
     };
     this.productBackendCalls.addProduct(data).subscribe((res: any) => {
@@ -172,15 +179,22 @@ export class ProductPageComponent {
   }
   async addMultipleProducts() {
     await this.fileLocationOnS3();
-    const { price, stock, status, desc, productCategory, productCode, fileLocation } =
-      this;
+    const {
+      price,
+      stock,
+      status,
+      desc,
+      productCategory,
+      productCode,
+      fileLocation,
+    } = this;
     const data = {
       price,
       stock,
       status,
       desc,
       category: productCategory,
-      code :productCode,
+      code: productCode,
       image: fileLocation,
     };
     this.ArrayOfProducts.push(data);
@@ -201,5 +215,16 @@ export class ProductPageComponent {
   }
   fileUploaded(event) {
     this.uploadedFile = event.target.files[0];
+  }
+  adjustHeight(imageCategory) {
+    if (imageCategory === "Bags") {
+      return "top-left-bags";
+    } else if (imageCategory === "Chinese Gold") {
+      return "top-left-chineseGold";
+    } else if (imageCategory === "Shawls") {
+      return "top-left-shawls";
+    } else {
+      return "top-left-accessories";
+    }
   }
 }

@@ -7,9 +7,12 @@ import { environment } from "src/environments/environment";
 export class ProductBackendCallsService {
   constructor(public myHttp: HttpClient) {}
   getAllProducts() {
-    return this.myHttp.get(`${environment.protocol}://${environment.host}:${environment.port}/products`, {
-      headers: { "Content-Type": "Application/Json" },
-    });
+    return this.myHttp.get(
+      `${environment.protocol}://${environment.host}:${environment.port}/products`,
+      {
+        headers: { "Content-Type": "Application/Json" },
+      }
+    );
   }
   getProductByCategoryWithLimit(category: String, page, limit) {
     return this.myHttp.get(
@@ -27,9 +30,18 @@ export class ProductBackendCallsService {
       }
     );
   }
+  getProductByStatus(status: String) {
+    return this.myHttp.get(
+      `${environment.protocol}://${environment.host}:${environment.port}/products/status/${status}`,
+      {
+        headers: { "Content-Type": "Application/Json" },
+      }
+    );
+  }
   addMultipleProducts(arrayOfProducts: any) {
     return this.myHttp.post(
-      `${environment.protocol}://${environment.host}:${environment.port}/products/category/`,arrayOfProducts,
+      `${environment.protocol}://${environment.host}:${environment.port}/products/category/`,
+      arrayOfProducts,
       {
         headers: { "Content-Type": "Application/Json" },
       }
@@ -50,6 +62,9 @@ export class ProductBackendCallsService {
     );
   }
   addProduct(data) {
-    return this.myHttp.post(`${environment.protocol}://${environment.host}:${environment.port}/products`, data);
+    return this.myHttp.post(
+      `${environment.protocol}://${environment.host}:${environment.port}/products`,
+      data
+    );
   }
 }

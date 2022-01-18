@@ -24,23 +24,31 @@ a {
 .logOutButton {
   cursor: pointer;
 }
-a:hover{
+a:hover {
   background-color: aqua;
   border-radius: 5px;
 }
-.instagram{
+.instagram {
   padding-top: 20px;
 }
-@-webkit-keyframes blackWhite {  
-  0% { color: red; }
-  50% { color: red; }
-  51% { color: black; }
-  100% { color: black; }
+@-webkit-keyframes blackWhite {
+  0% {
+    color: red;
+  }
+  50% {
+    color: red;
+  }
+  51% {
+    color: black;
+  }
+  100% {
+    color: black;
+  }
 }
 
 .blinkdiv {
-    color: red;
-    -webkit-animation-name: blackWhite;  
-    -webkit-animation-iteration-count: infinite;  
-    -webkit-animation-duration: 2s; 
-}  
+  color: red;
+  -webkit-animation-name: blackWhite;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 2s;
+}

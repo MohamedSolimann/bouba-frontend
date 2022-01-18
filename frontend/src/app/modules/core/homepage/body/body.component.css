@@ -6,7 +6,9 @@
 .brand-img {
   margin-top: 10px;
 }
-
+h2 {
+  padding: 10px;
+}
 .category-img:hover {
   opacity: 0.4;
   transition: 1s ease;

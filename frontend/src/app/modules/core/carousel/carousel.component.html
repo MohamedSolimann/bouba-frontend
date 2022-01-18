@@ -1,32 +1,15 @@
 <owl-carousel-o [options]="customOptions">
-  <ng-template carouselSlide
+  <ng-template carouselSlide *ngFor="let image of carouselImages"
     ><img
-      src="../../../../../assets/images/products/bags/bag-1(cropped).jpg"
+      [src]="image.image"
+      [id]="image.id"
       alt=""
+      class="carousel-image"
+      (click)="getImageCategory(image.category)"
     />
-  </ng-template>
-  <ng-template carouselSlide
-    ><img
-      src="../../../../../assets/images/products/ee0f2938-108b-42a2-86e4-fc06a55b77ea.jpeg"
-      alt=""
-    />
-  </ng-template>
-  <ng-template carouselSlide
-    ><img
-      src="../../../../../assets/images/products/bags/bag-1(cropped).jpg"
-      alt=""
-    />
-  </ng-template>
-  <ng-template carouselSlide
-    ><img
-      src="../../../../../assets/images/products/bags/bag-1(cropped).jpg"
-      alt=""
-    />
-  </ng-template>
-  <ng-template carouselSlide
-    ><img
-      src="../../../../../assets/images/products/bags/bag-1(cropped).jpg"
-      alt=""
-    />
+    <p class="centered img-text">
+      <span class="product-priceOnSale">{{ image.price }}.0EGP</span>
+      <span class="">{{ image.priceOnSale }}.0EGP</span>
+    </p>
   </ng-template>
 </owl-carousel-o>
