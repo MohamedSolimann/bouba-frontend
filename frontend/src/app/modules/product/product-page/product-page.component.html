@@ -6,12 +6,13 @@
         <img
           id="product-image"
           [src]="product.image"
-          class="img-thumbnail"
+          class="bags-image"
+          [ngClass]="ajdustImage(product.category)"
           alt=""
         />
         <p
           id="textOnImage"
-          [ngClass]="adjustHeight(product.category)"
+          [ngClass]="adjustTextHeight(product.category)"
           [ngStyle]="{
             'background-color': product.status === 'On Sale' ? 'red' : '#ADFF2F'
           }"

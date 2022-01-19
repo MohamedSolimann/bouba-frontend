@@ -218,15 +218,39 @@ export class ProductPageComponent {
   fileUploaded(event) {
     this.uploadedFile = event.target.files[0];
   }
-  adjustHeight(imageCategory) {
+  adjustTextHeight(imageCategory) {
     if (imageCategory === "Bags") {
-      return "top-left-bags";
+      return "top-left-text-bags";
     } else if (imageCategory === "Chinese Gold") {
-      return "top-left-chineseGold";
+      return "top-left-text-chineseGold";
     } else if (imageCategory === "Shawls") {
-      return "top-left-shawls";
+      return "top-left-text-shawls";
+    } else if (imageCategory === "Clothes") {
+      return "top-left-text-clothes";
+    } else if (imageCategory === "Scarfs") {
+      return "top-left-text-scarfs";
     } else {
-      return "top-left-accessories";
+      return "top-left-text-accessories";
     }
+  }
+  ajdustImage(imageCategory) {
+    if (imageCategory === "Bags") {
+      return "bags-image";
+    } else if (imageCategory === "Chinese Gold") {
+      return "chineseGold-image";
+    } else if (imageCategory === "Scarfs") {
+      return "scarfs-image";
+    } else if (imageCategory == "Shawls") {
+      return "shawls-image";
+    }
+    return "clothes-image";
+
+    // else if (imageCategory === "Chinese Gold") {
+    //   return "top-left-chineseGold";
+    // } else if (imageCategory === "Shawls") {
+    //   return "top-left-shawls";
+    // } else {
+    //   return "top-left-accessories";
+    // }
   }
 }

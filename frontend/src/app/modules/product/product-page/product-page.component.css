@@ -39,18 +39,27 @@ body {
 button {
   margin: 10px;
 }
-.img-thumbnail {
-  border: none;
+.bags-image {
+  width: 85%;
+  height: 350px;
 }
-.top-left-chineseGold {
-  position: absolute;
-  top: 8px;
-  left: 35px;
-  border-radius: 3px;
-  font-size: 15px;
-  padding: 0 3px;
+.clothes-image {
+  width: 70%;
+  height: 420px;
 }
-.top-left-bags {
+.chineseGold-image {
+  width: 85%;
+  height: 400px;
+}
+.scarfs-image {
+  width: 70%;
+  height: 420px;
+}
+.shawls-image {
+  width: 70%;
+  height: 420px;
+}
+.top-left-text-chineseGold {
   position: absolute;
   top: 8px;
   left: 55px;
@@ -58,30 +67,73 @@ button {
   font-size: 15px;
   padding: 0 3px;
 }
-.top-left-accessories {
+.top-left-text-bags {
   position: absolute;
   top: 8px;
-  left: 100px;
+  left: 59px;
   border-radius: 3px;
   font-size: 15px;
   padding: 0 3px;
 }
-.top-left-shawls {
+.top-left-text-clothes {
   position: absolute;
   top: 8px;
-  left: 65px;
+  left: 85px;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 0 3px;
+}
+.top-left-text-accessories {
+  position: absolute;
+  top: 8px;
+  left: 90px;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 0 3px;
+}
+.top-left-text-scarfs {
+  position: absolute;
+  top: 8px;
+  left: 90px;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 0 3px;
+}
+.top-left-text-shawls {
+  position: absolute;
+  top: 8px;
+  left: 84px;
   border-radius: 3px;
   font-size: 15px;
   padding: 0 3px;
 }
 @media (min-width: 760px) {
-  #product-image {
-    height: 380px;
-  }
 }
+/* mobile */
 @media (max-width: 760px) {
-  #textOnImage {
-    left: 16px;
+  .top-left-text-bags {
+    left: 20px;
+  }
+  .bags-image {
+    width: 100%;
+  }
+  .top-left-text-clothes {
+    left: 20px;
+  }
+  .top-left-text-chineseGold {
+    left: 20px;
+  }
+  .top-left-text-accessories {
+    left: 20px;
+  }
+  .scarfs-image {
+    width: 80%;
+  }
+  .top-left-text-scarfs {
+    left: 50px;
+  }
+  .top-left-text-shawls {
+    left: 20px;
   }
 }
 body {
