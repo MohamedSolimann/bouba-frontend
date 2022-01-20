@@ -37,16 +37,12 @@
         <button (click)="addToCart(product)" class="btn btn-primary">
           Addt To Cart
         </button>
-        <button
-          *ngIf="token"
-          (click)="getProduct(product)"
-          class="btn btn-primary"
-        >
+        <button (click)="getProduct(product)" class="btn btn-primary">
           Get Product Id
         </button>
       </div>
     </div>
-    <div *ngIf="token">
+    <div>
       <h3>Admin Panel</h3>
       <div>
         <label for="productId">Product-Id : </label>
