@@ -23,7 +23,8 @@ export class ProductPageComponent {
     this.userAuthentication();
     this.myAWSService.initializeS3Interface();
   }
-
+  public offersChecked: boolean = false;
+  public availableChecked: boolean = false;
   public products: Array<any> = [];
   public category: string = "";
   public price: string = "";
@@ -46,6 +47,8 @@ export class ProductPageComponent {
   public ArrayOfProducts: Array<any> = [];
   public fileLocation = "";
   public productsAdded: number = 0;
+  public productsFiltered: Array<any> = [];
+
   @HostListener("window:scroll", ["$event"])
   onScroll(event: any) {
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
@@ -244,13 +247,13 @@ export class ProductPageComponent {
       return "shawls-image";
     }
     return "clothes-image";
-
-    // else if (imageCategory === "Chinese Gold") {
-    //   return "top-left-chineseGold";
-    // } else if (imageCategory === "Shawls") {
-    //   return "top-left-shawls";
-    // } else {
-    //   return "top-left-accessories";
-    // }
+  }
+  getDataFromFilterMenu(value) {
+    if (value === "offers") {
+      this.productsFiltered = this.product.filter((obj) => {
+        obj.status === "On Sale";
+      });
+    }
+    if (value === "available") this.availableChecked = !this.availableChecked;
   }
 }

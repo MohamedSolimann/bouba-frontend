@@ -7,9 +7,10 @@ import { ProductPageComponent } from "./product-page/product-page.component";
 import { ProductRouting } from "./product.routes";
 import { CookieService } from "ngx-cookie-service";
 import { FormsModule } from "@angular/forms";
+import { FliterMenuComponent } from './fliter-menu/fliter-menu.component';
 
 @NgModule({
-  declarations: [ProductComponent, ProductPageComponent],
+  declarations: [ProductComponent, ProductPageComponent, FliterMenuComponent],
   imports: [CommonModule, FormsModule, ProductRouting, CoreModule],
   providers: [CookieService],
 })

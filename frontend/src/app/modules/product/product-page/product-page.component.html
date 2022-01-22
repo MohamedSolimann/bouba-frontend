@@ -1,119 +1,144 @@
 <body>
   <app-header></app-header>
-  <div id="body" class="container">
-    <div class="row">
-      <div class="col-lg-4 product" *ngFor="let product of products">
-        <img
-          id="product-image"
-          [src]="product.image"
-          class="bags-image"
-          [ngClass]="ajdustImage(product.category)"
-          alt=""
-        />
-        <p
-          id="textOnImage"
-          [ngClass]="adjustTextHeight(product.category)"
-          [ngStyle]="{
-            'background-color': product.status === 'On Sale' ? 'red' : '#ADFF2F'
-          }"
-        >
-          {{ product.status }}
-        </p>
-        <p class="product-price">
-          <span
-            [ngClass]="
-              product.status === 'On Sale'
-                ? 'product-priceOnSale'
-                : 'product-price'
-            "
-            >{{ product.price }}.0EGP</span
-          >
-
-          <span class="product-price" *ngIf="product.status === 'On Sale'">
-            {{ product.priceOnSale }}.0EGP
-          </span>
-        </p>
-        <p class="product-desc">{{ product.desc }}</p>
-        <button (click)="addToCart(product)" class="btn btn-primary">
-          Addt To Cart
-        </button>
-        <button (click)="getProduct(product)" class="btn btn-primary">
-          Get Product Id
-        </button>
-      </div>
+  <div class="row">
+    <div class="col-lg-2 filter-menu">
+      <app-fliter-menu
+        (fromFilterMenuToProduct)="getDataFromFilterMenu($event)"
+      ></app-fliter-menu>
     </div>
-    <div>
-      <h3>Admin Panel</h3>
-      <div>
-        <label for="productId">Product-Id : </label>
-        <input [(ngModel)]="productId" type="text" id="productId" />
-        <p>Product id used for update and remove products only</p>
+    <div class="col-lg-8">
+      <div id="body" class="container">
+        <div class="row">
+          <div class="col-lg-4 product" *ngFor="let product of products">
+            <img
+              id="product-image"
+              [src]="product.image"
+              [ngClass]="ajdustImage(product.category)"
+              alt=""
+            />
+            <p
+              id="textOnImage"
+              [ngClass]="adjustTextHeight(product.category)"
+              [ngStyle]="{
+                'background-color':
+                  product.status === 'On Sale' ? 'red' : '#ADFF2F'
+              }"
+            >
+              {{ product.status }}
+            </p>
+            <p class="product-price">
+              <span
+                [ngClass]="
+                  product.status === 'On Sale'
+                    ? 'product-priceOnSale'
+                    : 'product-price'
+                "
+                >{{ product.price }}.0EGP</span
+              >
+
+              <span class="product-price" *ngIf="product.status === 'On Sale'">
+                {{ product.priceOnSale }}.0EGP
+              </span>
+            </p>
+            <p class="product-desc">{{ product.desc }}</p>
+            <button (click)="addToCart(product)" class="btn btn-primary">
+              Addt To Cart
+            </button>
+            <button
+              *ngIf="token"
+              (click)="getProduct(product)"
+              class="btn btn-primary"
+            >
+              Get Product Id
+            </button>
+          </div>
+        </div>
+        <div *ngIf="token">
+          <h3>Admin Panel</h3>
+          <div>
+            <label for="productId">Product-Id : </label>
+            <input [(ngModel)]="productId" type="text" id="productId" />
+            <p>Product id used for update and remove products only</p>
+          </div>
+          <div>
+            <label for="price">Price : </label>
+            <input [(ngModel)]="price" type="text" id="price" />
+          </div>
+          <div>
+            <label for="priceOnSale">PriceOnSale : </label>
+            <input [(ngModel)]="priceOnSale" type="text" id="priceOnSale" />
+          </div>
+          <div>
+            <label for="desc">Desc : </label>
+            <input [(ngModel)]="desc" type="text" id="desc" />
+          </div>
+          <div>
+            <label for="stock">Stock : </label>
+            <input [(ngModel)]="stock" type="text" id="stock" />
+          </div>
+          <div>
+            <label for="productCategory">Product Category : </label>
+            <input
+              [(ngModel)]="productCategory"
+              type="text"
+              id="productCategory"
+            />
+          </div>
+          <div>
+            <label for="status">Status : </label>
+            <input [(ngModel)]="status" type="text" id="status" />
+          </div>
+          <div>
+            <label for="code">Code : </label>
+            <input
+              [(ngModel)]="code"
+              type="text"
+              id="code"
+              value="product.code"
+            />
+          </div>
+          <div>
+            <label for="product-image">Product Image : </label>
+            <input
+              (change)="fileUploaded($event)"
+              accept="/*image"
+              type="file"
+              id="productImage"
+            />
+          </div>
+          <p class="responseMessage">{{ responseMessage }}</p>
+          <button
+            (click)="handleAddProduct()"
+            class="btn btn-success admin-button"
+          >
+            Add Product
+          </button>
+          <button
+            (click)="handleRemoveProduct()"
+            class="btn btn-success admin-button"
+          >
+            Remove Porduct
+          </button>
+          <button
+            (click)="handleUpdateProduct()"
+            class="btn btn-success admin-button"
+          >
+            Update Porduct
+          </button>
+          <button
+            (click)="addMultipleProducts()"
+            class="btn btn-success admin-button"
+          >
+            Add Multiple Porducts <span>{{ productsAdded }}</span>
+          </button>
+          <button
+            (click)="handleAddallProducts()"
+            class="btn btn-success admin-button"
+          >
+            Add All Porducts
+          </button>
+        </div>
       </div>
-      <div>
-        <label for="price">Price : </label>
-        <input [(ngModel)]="price" type="text" id="price" />
-      </div>
-      <div>
-        <label for="priceOnSale">PriceOnSale : </label>
-        <input [(ngModel)]="priceOnSale" type="text" id="priceOnSale" />
-      </div>
-      <div>
-        <label for="desc">Desc : </label>
-        <input [(ngModel)]="desc" type="text" id="desc" />
-      </div>
-      <div>
-        <label for="stock">Stock : </label>
-        <input [(ngModel)]="stock" type="text" id="stock" />
-      </div>
-      <div>
-        <label for="productCategory">Product Category : </label>
-        <input [(ngModel)]="productCategory" type="text" id="productCategory" />
-      </div>
-      <div>
-        <label for="status">Status : </label>
-        <input [(ngModel)]="status" type="text" id="status" />
-      </div>
-      <div>
-        <label for="code">Code : </label>
-        <input [(ngModel)]="code" type="text" id="code" value="product.code" />
-      </div>
-      <div>
-        <label for="product-image">Product Image : </label>
-        <input
-          (change)="fileUploaded($event)"
-          accept="/*image"
-          type="file"
-          id="productImage"
-        />
-      </div>
-      <p class="responseMessage">{{ responseMessage }}</p>
-      <button (click)="handleAddProduct()" class="btn btn-success admin-button">
-        Add Product
-      </button>
-      <button
-        (click)="handleRemoveProduct()"
-        class="btn btn-success admin-button"
-      >
-        Remove Porduct
-      </button>
-      <button
-        (click)="handleUpdateProduct()"
-        class="btn btn-success admin-button"
-      >
-        Update Porduct
-      </button>
-      <button
-        (click)="addMultipleProducts()"
-        class="btn btn-success admin-button"
-      >
-        Add Multiple Porducts <span>{{ productsAdded }}</span>
-      </button>
-      <button
-        (click)="handleAddallProducts()"
-        class="btn btn-success admin-button"
-      >
-        Add All Porducts
-      </button>
     </div>
   </div>
 </body>

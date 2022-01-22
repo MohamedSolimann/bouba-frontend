@@ -44,7 +44,7 @@ button {
   height: 350px;
 }
 .clothes-image {
-  width: 70%;
+  width: 80%;
   height: 420px;
 }
 .chineseGold-image {
@@ -78,7 +78,7 @@ button {
 .top-left-text-clothes {
   position: absolute;
   top: 8px;
-  left: 85px;
+  left: 70px;
   border-radius: 3px;
   font-size: 15px;
   padding: 0 3px;
@@ -86,7 +86,7 @@ button {
 .top-left-text-accessories {
   position: absolute;
   top: 8px;
-  left: 90px;
+  left: 70px;
   border-radius: 3px;
   font-size: 15px;
   padding: 0 3px;
